@@ -1,0 +1,133 @@
+
+.login-register-content {
+    border: 2px solid #e67e22;
+    background-color: #ececec;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 25px 25px 25px;
+}
+
+.center-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.panel-forms {
+    display: table;
+}
+
+#heading-text {
+    color: #e67e22;
+    font-size: 2em;
+}
+
+#deading #inner-text {
+    font-size: large;
+}
+
+.panel-heading {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0;
+}
+
+.panels {
+    margin-top: 10px;
+    padding: 10px 10px 0px 10px;
+}
+
+.panels fieldset > input {
+    margin-bottom: 10px;
+    height: 25px;
+    width: 20rem;
+    display: block;
+}
+
+#register-form fieldset, #login-form fieldset {
+    border: 0;
+    padding: 0px;
+    width: 20rem;
+}
+
+#register-inputs legend {
+    color: #e67e22;
+}
+
+#register-panel, #login-panel {
+    display: table-cell;
+}
+
+#register-panel {
+    padding-left: 0;
+}
+
+#login-panel {
+    background-color: #e67e22;
+    color: #ffffff;
+    margin-right: 4%;
+    padding-bottom: 10px;
+}
+
+input {
+    display: block;
+}
+
+#remember{
+    display: inline-block;
+}
+
+.panel-buttons {
+    float: right;
+    height: 35px;
+    font-weight: bold;
+}
+
+#register-button {
+    color: #e67e22;
+    border: 5px solid #e67e22;
+}
+
+#login-button {
+    display: block;
+    width: 8rem;
+    color: #ffffff;
+    border: 5px solid #ffffff;
+    background-color: #e67e22;
+    display: inline-block;
+}
+
+#register-button:hover {
+    cursor: pointer;
+    background-color: #e67e22;
+    color: #ffffff;
+}
+
+#login-button:hover {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #e67e22;
+}
+
+.panel-links {
+    position: relative;
+    top: 10px;
+    color: #ffffff;
+}
+
+#login-link {
+    color: #e67e22;
+}
+
+.hidden {
+    display: none;
+}
+
+#register-failure {
+    color: red;
+    margin-top: 15px;
+    text-align: center;
+}

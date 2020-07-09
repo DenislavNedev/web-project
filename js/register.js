@@ -1,0 +1,50 @@
+'use strict';
+
+const isUsernameCorrect = (username) => {
+    if (username.length < 3 || username.length > 10) {
+        return false;
+    }
+    return true;
+}
+
+const isEmailCorrect = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(String(email).toLowerCase())) {
+        return true;
+    }
+    return false;
+}
+
+const doPasswordsMatch = (password, passwordConfirm) => {
+    return password === passwordConfirm;
+}
+
+const showFailureMessage = (message) => {
+    document.getElementById('register-failure').classList.remove('hidden');
+    document.getElementById('register-failure-text').innerText = message;
+}
+
+const registerButton = document.getElementById('register-button');
+registerButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const userData = {
+        username: document.getElementById('register-username').value,
+        name: document.getElementById('register-name').value,
+        email: document.getElementById('register-email').value,
+        facultyNumber: document.getElementById('register-faculty-number').value,
+        password: document.getElementById('register-password').value,
+        confirmPassword: document.getElementById('register-password-confirm').value
+    }
+
+    if (!doPasswordsMatch(userData.password, userData.confirmPassword)) {
+        showFailureMessage('Passwords don\'t match!');
+    } else if (!isUsernameCorrect(userData.username)) {
+        showFailureMessage('Username should be between 3 and 10 symbols long!');
+    } else if (!isEmailCorrect(userData.email)) {
+        showFailureMessage('Email is not valid!');
+    } else {
+        // valid case here
+        // register endpoint call
+    }
+});
