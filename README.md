@@ -31,6 +31,8 @@
 
 ```
 
+### Main directories:
+
 ```json
 // css       -> includes all screens styles in as many different files as possible
 // endpoints -> main BE php calls
