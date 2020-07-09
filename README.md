@@ -31,4 +31,14 @@
 
 ```
 
+```json
+// css       -> includes all screens styles in as many different files as possible
+// endpoints -> main BE php calls
+// img       -> external image and icon resources
+// js        -> main scripts per pages
+// php       -> includes halper common classes and configuration files
+// views     -> main screen layout files
+```
+
 All of the configurations like database access credentials, usernames and passwords should be saved in different configuration files.
+
