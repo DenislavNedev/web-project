@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login-register.css">
+    <link rel="stylesheet" type="text/css" href="../css/radio-buttons.css">
     <script src="../js/register.js" defer></script>
     <title>Presentation Planner (or smth like that)</title>
 </head>
@@ -19,12 +20,21 @@
                             <input type="text" name="register-username" id="register-username" placeholder="Username" required>
                             <input type="text" name="register-name" id="register-name" placeholder="Name" required>
                             <input type="email" name="register-email" id="register-email" placeholder="E-mail" required>
-                            <input type="number" name="register-faculty-number" id="register-faculty-number" placeholder="Faculty number" required>
                             <input type="password" name="register-password" id="register-password" placeholder="Password" required>
                             <input type="password" name="register-password-confirm" id="register-password-confirm" placeholder="Confirm password" required>
+                            <p>You are a:</p>
+                            <p>
+                                <input type="radio" id="teacher" name="radio-group" checked>
+                                <label for="teacher">Teacher</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="student" name="radio-group">
+                                <label for="student">Student</label>
+                            </p>
                             <div id="register-failure" class="hidden">
                                 <strong id="register-failure-text">Error!</strong>
                             </div>
+                            <input type="number" name="register-faculty-number" id="register-faculty-number" placeholder="Faculty number" required>
                             <button id="register-button" class="panel-buttons">Register</button>
                             <a id="login-link" class="panel-links" href="login.html">Already registered? Login!</a>
                         </fieldset>

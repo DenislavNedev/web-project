@@ -7,6 +7,12 @@
     padding: 25px 25px 25px;
 }
 
+input:focus {
+    outline: none !important;
+    border-color: #e67e22;
+    box-shadow: 0 0 10px #e67e22;
+}
+
 .center-screen {
     position: fixed;
     top: 50%;
@@ -130,4 +136,8 @@ input {
     color: red;
     margin-top: 15px;
     text-align: center;
+}
+
+#register-faculty-number {
+    display: none;
 }

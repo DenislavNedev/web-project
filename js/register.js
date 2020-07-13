@@ -24,6 +24,33 @@ const showFailureMessage = (message) => {
     document.getElementById('register-failure-text').innerText = message;
 }
 
+let isUserTeacher = true;
+
+const studentRadioButton = document.getElementById('student');
+studentRadioButton.addEventListener('change', (event) => {
+    event.preventDefault();
+    isUserTeacher = false;
+    document.getElementById('register-faculty-number').style.display = 'block';
+});
+
+const teacherRadioButton = document.getElementById('teacher');
+teacherRadioButton.addEventListener('change', (event) => {
+    event.preventDefault();
+    isUserTeacher = true;
+    document.getElementById('register-faculty-number').style.display = 'none';
+});
+
+const passRegisterData = (userData) => {
+    fetch('../endpoints/register.php', {
+        method: 'POST',
+        body: JSON.stringify(userData)
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+    });
+}
+
 const registerButton = document.getElementById('register-button');
 registerButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -32,7 +59,8 @@ registerButton.addEventListener('click', (event) => {
         username: document.getElementById('register-username').value,
         name: document.getElementById('register-name').value,
         email: document.getElementById('register-email').value,
-        facultyNumber: document.getElementById('register-faculty-number').value,
+        role: isUserTeacher === true ? "teacher" : "student",
+        facultyNumber: isUserTeacher === true ? 1000 : document.getElementById('register-faculty-number').value,
         password: document.getElementById('register-password').value,
         confirmPassword: document.getElementById('register-password-confirm').value
     }
@@ -46,5 +74,7 @@ registerButton.addEventListener('click', (event) => {
     } else {
         // valid case here
         // register endpoint call
+        console.log(userData);
+        passRegisterData(userData);
     }
 });
