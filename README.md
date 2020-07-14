@@ -7,20 +7,25 @@
 ├── css
 │   ├── index.css
 │   ├── login-register.css
+│   ├── radio-buttons.css
 │   ├── screen1.css
 │   └── screen2.css
 ├── endpoints
 │   ├── login.php
+│   ├── logout.php
 │   └── register.php
-├── img
 ├── js
 │   ├── index.js
 │   ├── login.js
+│   ├── logout.js
 │   └── register.js
 ├── php
 │   ├── class1.php
 │   ├── class2.php
-│   └── config.php
+│   ├── config.php
+│   └── DatabaseConnection.php
+├── sql
+│   └── database_scheme.sql
 ├── views
 │   ├── login.html
 │   ├── register.html
@@ -39,6 +44,7 @@
 // img       -> external image and icon resources
 // js        -> main scripts per pages
 // php       -> includes halper common classes and configuration files
+// sql		 -> all sql queries needed to have a working database
 // views     -> main screen layout files
 ```
 
