@@ -47,7 +47,19 @@ const passRegisterData = (userData) => {
     })
     .then(response => response.json())
     .then(response => {
-        console.log(response);
+        if (response.status) {
+            console.log("Successful register!");
+        } else {
+            console.log("Error registration");
+            console.log(response.message);
+            console.log(response.errorCode);
+            switch(response.errorCode) {
+                case '23000': showFailureMessage('This username is already taken. Please, choose another one!');
+                              break;
+                default:
+                    break;
+            }
+        }
     });
 }
 
@@ -72,9 +84,6 @@ registerButton.addEventListener('click', (event) => {
     } else if (!isEmailCorrect(userData.email)) {
         showFailureMessage('Email is not valid!');
     } else {
-        // valid case here
-        // register endpoint call
-        console.log(userData);
         passRegisterData(userData);
     }
 });

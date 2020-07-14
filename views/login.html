@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/login-register.css">
+    <script type="text/javascript" src="../js/login.js" defer></script>
     <title>Presentation Planner (or smth like that)</title>
 </head>
 
@@ -30,9 +31,15 @@
                                 required>
                             <div id="register-failure" class="hidden">
                                 <strong id="register-failure-text">Error!</strong>
-                            </div>
-                            <button id="login-button" class="panel-buttons">Login</button>
-                            <a class="panel-links" href="register.html">Register now!</a>
+                                <input type="text" name="login-username" id="login-username" placeholder="Username"
+                                    required>
+                                <input type="password" name="login-password" id="login-password" placeholder="Password"
+                                    required>
+                                <div id="login-failure" class="hidden">
+                                    <strong id="login-failure-text">Error!</strong>
+                                </div>
+                                <button id="login-button" class="panel-buttons">Login</button>
+                                <a class="panel-links" href="register.html">Register now!</a>
                         </fieldset>
                     </form>
                 </article>

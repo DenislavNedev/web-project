@@ -95,10 +95,16 @@ input {
     display: none;
 }
 
-#register-failure {
+#register-failure, #login-failure {
     color: red;
     margin-top: 15px;
     text-align: center;
+    margin-bottom: 5px;
+}
+
+#login-failure {
+    color: #ea4335;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 #register-faculty-number {
