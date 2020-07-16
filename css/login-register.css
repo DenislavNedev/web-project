@@ -7,16 +7,13 @@
     /* border: 2px solid #fa7900; */
     width: -moz-fit-content;
     width: fit-content;
+    text-align: left;
 }
 
 input:focus {
     outline: none !important;
     border-color: #fa7900;
     box-shadow: 0 0 10px #fa7900;
-}
-
-.panel-forms {
-    display: table;
 }
 
 #heading-text {
@@ -54,6 +51,7 @@ input:focus {
 
 #register-inputs, #login-inputs legend {
     color: #fa7900;
+    text-align: left;
 }
 
 #register-panel, #login-panel {
@@ -104,7 +102,6 @@ input {
 
 #login-failure {
     color: #ea4335;
-    text-shadow: 1px 1px 2px #000000;
 }
 
 #register-faculty-number {
