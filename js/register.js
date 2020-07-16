@@ -22,6 +22,10 @@ const doPasswordsMatch = (password, passwordConfirm) => {
 const showFailureMessage = (message) => {
     document.getElementById('register-failure').classList.remove('hidden');
     document.getElementById('register-failure-text').innerText = message;
+    // shake animation bellow
+    const panel = document.getElementById('register-form');
+    panel.style.animation = 'shake 0.3s';
+    panel.style.animationIterationCount = '1s';
 }
 
 let isUserTeacher = true;
@@ -57,7 +61,7 @@ registerButton.addEventListener('click', (event) => {
     if (!doPasswordsMatch(userData.password, userData.confirmPassword)) {
         showFailureMessage('Passwords don\'t match!');
     } else if (!isUsernameCorrect(userData.username)) {
-        showFailureMessage('Username should be between 3 and 10 symbols long!');
+        showFailureMessage('Username should be between\n 3 and 10 symbols long!');
     } else if (!isEmailCorrect(userData.email)) {
         showFailureMessage('Email is not valid!');
     } else {
@@ -84,6 +88,8 @@ registerButton.addEventListener('click', (event) => {
             username: userData.username,
             password: userData.password
         }
+
+        // The code bellow is repeatable - need to be fixed.
         
         fetch('../endpoints/login.php', {
             method: 'POST',

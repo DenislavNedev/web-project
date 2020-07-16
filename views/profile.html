@@ -25,12 +25,37 @@
     <main>
         <section id="profile" class="login-register-content">
             <h2 id="welcome-prompt">Welcome, </h2>
-            <p id="username">Username: </p>
-            <p id="email">Email: </p>
-            <p id="role">Role: </p>
-            <button id="logout-button" class="panel-buttons">Logout</button>
+            <div class="flex-box">
+                <span class="inlined" id="username">Username: </span>
+                <button id="change-username-button" class="orange-buttons">Change</button>
+            </div>
+            <div id="username-form" class="flex-box hidden">
+                <input type="text" id="new-username" name="new-username" placeholder="New username">
+                <button id="save-username-button" class="orange-buttons">Save</button>
+            </div>
+            <div class="flex-box">
+                <span class="inlined" id="email">Email: </span>
+                <button id="change-email-button" class="orange-buttons">Change</button>
+            </div>
+            <div id="email-form" class="flex-box hidden">
+                <input type="email" id="new-email" name="new-email" placeholder="New email">
+                <button id="save-email-button" class="orange-buttons">Save</button>
+            </div>
+            <span id="role">Role: </span>
+            <div id="change-failure" class="hidden">
+                <span id="failure-message">Error!</span>
+            </div>
+            <div id="passwords" class="hidden">
+                <input type="password" id="current-password" name="current-password" placeholder="Current password">
+                <input type="password" id="new-password" name="new-password" placeholder="New password">
+                <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Confirm new password">
+            </div>
+            <div class="flex-box" id="bottom-buttons">
+                <button id="change-password-button" class="orange-buttons">Change password</button>
+                <button id="logout-button" class="panel-buttons orange-buttons">Logout</button>
+            </div>
         </section>
-        <!-- <section id="snackbar"></section> -->
+        <section id="snackbar"></section>
     </main>
 </body>
 

@@ -1,9 +1,46 @@
 #logout-button {
     float: right;
-    height: 35px;
+}
+
+#welcome-prompt {
+	color: #fa7900;
+    font-size: 2em;
+    text-align: center;
+}
+
+.orange-buttons {
+	height: 35px;
     font-weight: bold;
     cursor: pointer;
     background-color: #fa7900;
     color: #ffffff;
     border: none;
+}
+
+#username, #name, #email {
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+#bottom-buttons {
+	margin-top: 15px;
+}
+
+.flex-box {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 5px;
+}
+
+#passwords {
+	margin-top: 20px;
+}
+
+#passwords input {
+	margin-bottom: 10px;
+	height: 35px;
+}
+
+.hidden {
+	display: none;
 }
