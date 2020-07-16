@@ -6,27 +6,27 @@ const insertAfter = (referenceNode, newNode) => {
 
 window.onload = (event) => {
 	event.preventDefault();
- 
+
 	fetch('../endpoints/getProfile.php', { method: 'GET' })
-	.then(response => response.json())
-	.then(response => {
-		if (!response.status) {
-			console.log('Something went wrong!');
-		} else {
-			document.getElementById('welcome-prompt').innerText += (' ' + response.name);
-			document.getElementById('username').innerText += (' ' + response.username);
-			document.getElementById('email').innerText += (' ' + response.email);
-			document.getElementById('role').innerText += (' ' + response.role);
-			if (response.role === 'student') {
-				const profile = document.getElementById('profile');
-				const facultyNumberNode = document.createElement('p');
-				facultyNumberNode.setAttribute('id', 'facultyNumber');
-				const facultyNumberText = document.createTextNode('Faculty Number: ' + response.facultyNumber);
-				facultyNumberNode.appendChild(facultyNumberText);
-				insertAfter(document.getElementById('role'), facultyNumberNode);
+		.then(response => response.json())
+		.then(response => {
+			if (!response.status) {
+				console.log('Something went wrong!');
+			} else {
+				document.getElementById('welcome-prompt').innerText += (' ' + response.name);
+				document.getElementById('username').innerText += (' ' + response.username);
+				document.getElementById('email').innerText += (' ' + response.email);
+				document.getElementById('role').innerText += (' ' + response.role);
+				if (response.role === 'student') {
+					const profile = document.getElementById('profile');
+					const facultyNumberNode = document.createElement('p');
+					facultyNumberNode.setAttribute('id', 'facultyNumber');
+					const facultyNumberText = document.createTextNode('Faculty Number: ' + response.facultyNumber);
+					facultyNumberNode.appendChild(facultyNumberText);
+					insertAfter(document.getElementById('role'), facultyNumberNode);
+				}
 			}
-		}
-	});
+		});
 };
 
 const logoutButton = document.getElementById('logout-button');
@@ -34,32 +34,32 @@ logoutButton.addEventListener('click', (event) => {
 	event.preventDefault();
 
 	fetch('../endpoints/logout.php', { method: 'GET' })
-	.then(response => response.json())
-	.then(response => {
-		if (response.status) {
-			window.location.replace('../views/login.html');
-		} else {
-			console.log('Logout failed!');
-		}
-	});
+		.then(response => response.json())
+		.then(response => {
+			if (response.status) {
+				window.location.replace('../views/login.html');
+			} else {
+				console.log('Logout failed!');
+			}
+		});
 });
 
 const showErrorMessage = (message) => {
 	document.getElementById('change-failure').classList.remove('hidden');
-    document.getElementById('failure-message').innerText = message;
-    // shake animation here again
-    const panel = document.getElementById('profile');
-    panel.style.animation = 'shake 0.3s';
-    panel.style.animationIterationCount = '1s';
+	document.getElementById('failure-message').innerText = message;
+	// shake animation here again
+	const panel = document.getElementById('profile');
+	panel.style.animation = 'shake 0.3s';
+	panel.style.animationIterationCount = '1s';
 }
 
 const showSnackbar = (message) => {
 	const snackbar = document.getElementById('snackbar');
 	snackbar.innerText = message;
 	snackbar.className = 'show';
-	setTimeout(function() { 
+	setTimeout(function () {
 		snackbar.className = snackbar.className.replace('show', '');
-	}, 100000000);
+	}, 3000);
 }
 
 const changeUsernameButton = document.getElementById('change-username-button');
@@ -93,12 +93,12 @@ const changePasswordRequest = (userPasswords) => {
 		method: 'POST',
 		body: JSON.stringify(userPasswords)
 	})
-	.then(response => response.json())
-	.then(response => {
-		if (response.status) {
-			showSnackbar('You have successfully changed your password');
-		}
-	});
+		.then(response => response.json())
+		.then(response => {
+			if (response.status) {
+				showSnackbar('You have successfully changed your password');
+			}
+		});
 }
 
 const changePasswordListen = () => {
