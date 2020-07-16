@@ -40,29 +40,6 @@ teacherRadioButton.addEventListener('change', (event) => {
     document.getElementById('register-faculty-number').style.display = 'none';
 });
 
-const passRegisterData = (userData) => {
-    fetch('../endpoints/register.php', {
-        method: 'POST',
-        body: JSON.stringify(userData)
-    })
-    .then(response => response.json())
-    .then(response => {
-        if (response.status) {
-            console.log("Successful register!");
-        } else {
-            console.log("Error registration");
-            console.log(response.message);
-            console.log(response.errorCode);
-            switch(response.errorCode) {
-                case '23000': showFailureMessage('This username is already taken. Please, choose another one!');
-                              break;
-                default:
-                    break;
-            }
-        }
-    });
-}
-
 const registerButton = document.getElementById('register-button');
 registerButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -84,6 +61,44 @@ registerButton.addEventListener('click', (event) => {
     } else if (!isEmailCorrect(userData.email)) {
         showFailureMessage('Email is not valid!');
     } else {
-        passRegisterData(userData);
+        fetch('../endpoints/register.php', {
+        method: 'POST',
+        body: JSON.stringify(userData)
+    })
+    .then(response => response.json())
+    .then(response => {
+        if (response.status) {
+            console.log("Successful register!");
+        } else {
+            console.log("Error registration");
+            console.log(response.message);
+            console.log(response.errorCode);
+            switch(response.errorCode) {
+                case '23000': showFailureMessage('This username is already taken. Please, choose another one!');
+                              break;
+                default:
+                    break;
+            }
+        }
+        const loginUser = {
+            username: userData.username,
+            password: userData.password
+        }
+        
+        fetch('../endpoints/login.php', {
+            method: 'POST',
+            body: JSON.stringify(loginUser)
+        })
+        .then(response => response.json())
+        .then(response => {
+            if (response.status) {
+                console.log("Successful login!");
+                console.log(response.username);
+                window.location.replace('../views/profile.html');
+            } else {
+                console.log("Error login");
+            }
+        });
+    });
     }
 });

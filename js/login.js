@@ -22,6 +22,7 @@ const passLoginData = (userData) => {
         if (response.status) {
             console.log("Successful login!");
             console.log(response.username);
+            window.location.replace('../views/profile.html');
         } else {
             console.log("Error login");
         }
