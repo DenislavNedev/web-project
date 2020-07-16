@@ -4,6 +4,7 @@
   padding: 20px 30px;
   color: #363b41;
   width: fit-content;
+  display: contents;
 }
 
 .calendar_header {
@@ -54,7 +55,7 @@
 } */
 
 .event_item {
-  padding: 5px;
+  padding: 10px 5px 5px 5px;
   cursor: pointer;
 }
 

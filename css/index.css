@@ -3,6 +3,10 @@
     font-family: 'Roboto', sans-serif;
   }
   
+  main {
+      text-align: center;
+  }
+
   body {
     background-color: #fafafa;
   }
@@ -12,10 +16,15 @@
     max-width: max-content;
     margin-top: 20px;
   }
+
+  .logo-header, .nav {
+    text-align: center;
+  }
   
   #logo {
     width: 85px;
     height: 85px;
+    display: inline-block;
   }
   
   #logo-title {
@@ -26,9 +35,30 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: italic;
     font-variant-caps: all-petite-caps;
+    display: inline-block;
+    vertical-align: bottom;
   }
   
   .container {
-    display: flex;
+    /* display: flex; */
     margin-bottom: 20px;
+  }
+
+  .nav-item {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 100px;
+    font-weight: bolder;
+    margin: 0px 0px 25px 0px;
+    color: rgba(0, 0, 0, 0.75);
+    border-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.75);
+  }
+
+  .nav-item:hover {
+    color: #fa7900;
+    /* border-style: solid; */
+    /* border-width: 0px 1px; */
+    border-color: #fa7900;
+    box-shadow: 0px 0px 10px #fa7900;
   }
