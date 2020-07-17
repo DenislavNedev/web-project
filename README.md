@@ -11,6 +11,7 @@
 │   ├── login-register.css
 │   ├── profile.css
 │   ├── radio-buttons.css
+│   ├── select-time-box.css
 │   └── snackbar.css
 ├── endpoints
 │   ├── changePassword.php
@@ -23,6 +24,7 @@
 │   ├── 66-512.png
 │   └── logo.png
 ├── js
+│   ├── addEventModal.js
 │   ├── index.js
 │   ├── login.js
 │   ├── logout.js
@@ -31,9 +33,11 @@
 ├── php
 │   ├── config.php
 │   ├── DatabaseConnection.php
+│   ├── Profile.php
 │   └── User.php
 ├── sql
 │   ├── database_scheme.sql
+│   ├── events_changelog.sql
 │   └── users_changelog.sql
 ├── views
 │   ├── add-event.html
@@ -43,7 +47,6 @@
 │   └── register.html
 ├── index.html
 └── README.md
-
 
 ```
 
