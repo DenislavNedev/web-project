@@ -10,6 +10,7 @@
 }
 
 .calendar_header {
+  /* font-size: 22px; */
   border-bottom: 2px solid rgba(0, 0, 0, 0.08);
   text-align: center;
 }
@@ -41,7 +42,7 @@
   cursor: pointer;
   color: #c2c2c2;
   margin-left: 15px;
-  padding: 5px 15px;
+  padding: 5px 13px;
   font-weight: 1000;
   font-size: 20px;
   text-align: center;
@@ -57,8 +58,8 @@
 } */
 
 .event_item {
-  margin: 18px 0;
-  padding: 5px;
+  margin: 5px 0;
+  padding: 8px 5px 2px 5px;
   cursor: pointer;
 }
 
