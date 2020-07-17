@@ -59,7 +59,8 @@ const showSnackbar = (message) => {
 	snackbar.className = 'show';
 	setTimeout(function () {
 		snackbar.className = snackbar.className.replace('show', '');
-	}, 3000);
+		location.reload();
+	}, 2000);
 }
 
 const changeUsernameButton = document.getElementById('change-username-button');
@@ -97,6 +98,8 @@ const changePasswordRequest = (userPasswords) => {
 		.then(response => {
 			if (response.status) {
 				showSnackbar('You have successfully changed your password');
+			} else {
+				showErrorMessage('Wrong password');
 			}
 		});
 }
@@ -106,7 +109,7 @@ const changePasswordListen = () => {
 	changePasswordButton.addEventListener('click', (event) => {
 		event.preventDefault();
 
-		changePasswordButton.innerText = "Save";
+		changePasswordButton.innerText = 'Save';
 		const passwordsForm = document.getElementById('passwords');
 		passwordsForm.classList.remove('hidden');
 		changePasswordButton.addEventListener('click', (event) => {

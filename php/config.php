@@ -1,6 +1,0 @@
-<?php 
-
-$dbUser = 'root';
-$dbPass = '';
-
-?>
