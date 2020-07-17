@@ -7,6 +7,10 @@
 
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/add-event.css">
+    <link rel="stylesheet" href="../css/select-time-box.css">
+
+    <script src="../js/addEventModal.js" defer></script>
 </head>
 
 <body class="center">
@@ -17,7 +21,7 @@
     <nav class="nav" id="navigation">
         <a class="nav-item" href="profile.html">Profile</a>
         <a class="nav-item" href="calendar.html">Calendar</a>
-        <a class="nav-item" href="add-event.html">Add event</a>
+        <a class="nav-item" href="add-event.html">Add slots</a>
     </nav>
     <main>
         <div class="container">
@@ -30,7 +34,7 @@
                     <div class="cl_plan">
                         <!-- <div class="cl_title">Today</div> -->
                         <div class="cl_copy">22nd April 2018</div>
-                        <i class="cl_add">+</i>
+                        <i id="enroll_day1" class="cl_add">+</i>
                     </div>
                 </article>
                 <article class="calendar_events">
@@ -48,6 +52,47 @@
                 </article>
             </section>
         </div>
+        <!-- The Modal -->
+        <section id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>{date} {name}</h2>
+                </div>
+                <div class="modal-body">
+                    <div id="select-time">
+                        <p>Please, select your time to present:</p>
+                        <div class="select-box">
+                            <div class="select-box__current" tabindex="1">
+                                <div class="select-box__value">
+                                    <input class="select-box__input" type="radio" id="0" value="1" name="Ben"
+                                        checked="checked" />
+                                    <p class="select-box__input-text">09:15 - 09:30</p>
+                                </div>
+                                <div class="select-box__value">
+                                    <input class="select-box__input" type="radio" id="1" value="2" name="Ben"
+                                        checked="checked" />
+                                    <p class="select-box__input-text">10:45 - 11:00</p>
+                                </div>
+                                <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg"
+                                    alt="Arrow Icon" aria-hidden="true" />
+                            </div>
+                            <ul class="select-box__list">
+                                <li>
+                                    <label class="select-box__option" for="0" aria-hidden="aria-hidden">09:15 -
+                                        09:30</label>
+                                </li>
+                                <li>
+                                    <label class="select-box__option" for="1" aria-hidden="aria-hidden">10:45 -
+                                        11:00</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>Some other text...</p>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 
