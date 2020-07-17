@@ -5,34 +5,45 @@
 ```markdown
 .
 ├── css
+│   ├── add-event.css
+│   ├── calendar.css
 │   ├── index.css
 │   ├── login-register.css
+│   ├── profile.css
 │   ├── radio-buttons.css
-│   ├── screen1.css
-│   └── screen2.css
+│   └── snackbar.css
 ├── endpoints
+│   ├── changePassword.php
+│   ├── checkLogin.php
+│   ├── getProfile.php
 │   ├── login.php
 │   ├── logout.php
 │   └── register.php
+├── img
+│   ├── 66-512.png
+│   └── logo.png
 ├── js
 │   ├── index.js
 │   ├── login.js
 │   ├── logout.js
+│   ├── profile.js
 │   └── register.js
 ├── php
-│   ├── class1.php
-│   ├── class2.php
 │   ├── config.php
-│   └── DatabaseConnection.php
+│   ├── DatabaseConnection.php
+│   └── User.php
 ├── sql
-│   └── database_scheme.sql
+│   ├── database_scheme.sql
+│   └── users_changelog.sql
 ├── views
+│   ├── add-event.html
+│   ├── calendar.html
 │   ├── login.html
-│   ├── register.html
-│   ├── screen1.html
-│   └── screen2.html
+│   ├── profile.html
+│   └── register.html
 ├── index.html
 └── README.md
+
 
 ```
 
