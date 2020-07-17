@@ -73,38 +73,38 @@ registerButton.addEventListener('click', (event) => {
     .then(response => {
         if (response.status) {
             console.log("Successful register!");
+            const loginUser = {
+                username: userData.username,
+                password: userData.password
+            }
+
+            // The code bellow is repeatable - need to be fixed.
+            
+            fetch('../endpoints/login.php', {
+                method: 'POST',
+                body: JSON.stringify(loginUser)
+            })
+            .then(response => response.json())
+            .then(response => {
+                if (response.status) {
+                    console.log("Successful login!");
+                    console.log(response.username);
+                    window.location.replace('../views/profile.html');
+                } else {
+                    console.log("Error login");
+                }
+            });
         } else {
             console.log("Error registration");
             console.log(response.message);
             console.log(response.errorCode);
             switch(response.errorCode) {
-                case '23000': showFailureMessage('This username is already taken. Please, choose another one!');
+                case '23000': showFailureMessage('This username is already taken.\nPlease, choose another one!');
                               break;
                 default:
                     break;
             }
         }
-        const loginUser = {
-            username: userData.username,
-            password: userData.password
-        }
-
-        // The code bellow is repeatable - need to be fixed.
-        
-        fetch('../endpoints/login.php', {
-            method: 'POST',
-            body: JSON.stringify(loginUser)
-        })
-        .then(response => response.json())
-        .then(response => {
-            if (response.status) {
-                console.log("Successful login!");
-                console.log(response.username);
-                window.location.replace('../views/profile.html');
-            } else {
-                console.log("Error login");
-            }
-        });
     });
     }
 });
