@@ -13,7 +13,7 @@
 
     $con = $dbCon->getConnection();
 
-    $sqlInsertStatement = "INSERT INTO `еvents` (`id`, `username`, `subject`, `start`, `end`) VALUES (NULL, :username, :subject, :start, :end)";
+    $sqlInsertStatement = "INSERT INTO `events` (`id`, `username`, `subject`, `start`, `end`) VALUES (NULL, :username, :subject, :start, :end)";
     $prepareStatement = $con->prepare($sqlInsertStatement);
     $result = $prepareStatement->execute([
         'username' => $username,
