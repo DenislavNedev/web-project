@@ -102,6 +102,6 @@
 
 #subject:focus {
     outline: none !important;
-    border-color: #fa7900;
-    box-shadow: 0 0 10px #fa7900;
+    border: 0.4px solid #fa7900;
+    box-shadow: 0 0 8px #fa7900;
 }
