@@ -1,7 +1,5 @@
 'use strict';
 
-// console.log("pesho");
-
 const add_event_btn = document.getElementById("add-event-btn");
 
 add_event_btn.addEventListener("click", e => {
@@ -21,39 +19,33 @@ add_event_btn.addEventListener("click", e => {
     console.log(end_timestamp);
 
     fetch('../endpoints/getProfile.php', { method: 'GET' })
-        .then(response => response.json())
-        .then(response => {
-            if (!response.status) {
-                console.log('Something went wrong!');
-            } else {
-                if (response.role === 'student') {
-                    const username = response.username;
+    .then(response => response.json())
+    .then(response => {
+        if (!response.status) {
+            console.log('Something went wrong!');
+        } else {
+            if (response.role === 'student') {
+                const username = response.username;
 
-                    const event = {
-                        username: username,
-                        subject: subject,
-                        start: start_timestamp,
-                        end: end_timestamp
-                    }
-
-                    fetch('../endpoints/addEvent.php', {
-                        method: 'POST',
-                        body: JSON.stringify(event)
-                    })
-                        .then(response => response.json())
-                        .then(response => {
-                            // then check if status is ok
-                            console.log(response);
-                            const date_start = new Date(response.time_start);
-                            const date_end = new Date(response.time_end);
-
-                            console.log(date_start);
-                            console.log(date_end);
-                        })
+                const event = {
+                    username: username,
+                    subject: subject,
+                    start: start_timestamp,
+                    end: end_timestamp
                 }
-            }
-        });
 
-    console.log(start_timestamp);
-    console.log(end_timestamp);
+                fetch('../endpoints/addEvent.php', {
+                    method: 'POST',
+                    body: JSON.stringify(event)
+                })
+                .then(response => response.json())
+                .then(response => {
+                    // then check if status is ok
+                    console.log(response);
+                    const date_start = new Date(response.time_start);
+                    const date_end = new Date(response.time_end);
+                })
+            }
+        }
+    });
 });
