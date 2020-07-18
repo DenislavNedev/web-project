@@ -17,13 +17,13 @@ if (isset($_SESSION['username'])) {
 	$databaseHandle = new DatabaseConnection();
 	$connection = $databaseHandle->getConnection();
 
-	$selectStatement = $connection->prepare("SELECT passoword FROM `Users` WHERE username = :username");
+	$selectStatement = $connection->prepare("SELECT password FROM `users` WHERE username = :username");
 	$result = $selectStatement->execute([
 		'username' => $username
 	]);
 	$databaseUser = $selectStatement->fetch();
 
-	if (!password_verify($password, $databaseUser['passoword'])) {
+	if (!password_verify($password, $databaseUser['password'])) {
 		echo json_encode([
 			'status' => false
 		]);

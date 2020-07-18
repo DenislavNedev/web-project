@@ -27,12 +27,10 @@ add_event_btn.addEventListener("click", e => {
                 console.log('Something went wrong!');
             } else {
                 if (response.role === 'student') {
-                    const faculty_number = response.facultyNumber;
-                    const name = response.name;
+                    const username = response.username;
 
                     const event = {
-                        facultyNumber: faculty_number,
-                        name: name,
+                        username: username,
                         subject: subject,
                         start: start_timestamp,
                         end: end_timestamp

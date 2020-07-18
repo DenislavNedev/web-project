@@ -2,9 +2,7 @@
     $eventData = json_decode(file_get_contents('php://input'), true);
 
     // var_dump($event);
-
-    $facultyNumber = $eventData["facultyNumber"];
-    $name = $eventData["name"];
+    $username = $eventData["username"];
     $subject = $eventData["subject"];
     $start = $eventData["start"];
     $end = $eventData["end"];
@@ -15,11 +13,10 @@
 
     $con = $dbCon->getConnection();
 
-    $sqlInsertStatement = "INSERT INTO `Events` (`id`, `facultyNumber`, `name`, `subject`, `start`, `end`) VALUES (NULL, :facultyNumber, :name, :subject, :start, :end)";
+    $sqlInsertStatement = "INSERT INTO `еvents` (`id`, `username`, `subject`, `start`, `end`) VALUES (NULL, :username, :subject, :start, :end)";
     $prepareStatement = $con->prepare($sqlInsertStatement);
     $result = $prepareStatement->execute([
-        'facultyNumber' => (int)$facultyNumber,
-        'name' => $name,
+        'username' => $username,
         'subject' => $subject,
         'start' => $start,
         'end' => $end

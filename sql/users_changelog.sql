@@ -3,7 +3,7 @@
 -- username: root
 -- password: admin1234
 
-CREATE TABLE `Users`
+CREATE TABLE `users`
 (
  `id` int NOT NULL AUTO_INCREMENT,
  `username` varchar
@@ -15,15 +15,17 @@ CREATE TABLE `Users`
  `role` varchar
 (8) COLLATE utf8mb4_unicode_ci NOT NULL,
  `facultyNumber` int NOT NULL,
- `passoword` text COLLATE utf8mb4_unicode_ci NOT NULL,
+ `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
  PRIMARY KEY
 (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
-ALTER TABLE `Users`
+ALTER TABLE `users`
 ADD UNIQUE
 ( `username`);
 
-ALTER TABLE `Users`
+ALTER TABLE `users`
 ADD UNIQUE
 ( `facultyNumber`);
+
+ALTER TABLE `users` CHANGE `facultyNumber` `facultyNumber` INT NULL;

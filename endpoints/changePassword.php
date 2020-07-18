@@ -18,19 +18,19 @@ if (!isset($_SESSION['username'])) {
 	$databaseHandle = new DatabaseConnection();
 	$connection = $databaseHandle->getConnection();
 
-	$selectPasswordStatement = $connection->prepare("SELECT id, passoword FROM `Users` WHERE username = :username");
+	$selectPasswordStatement = $connection->prepare("SELECT id, password FROM `users` WHERE username = :username");
 	$result = $selectPasswordStatement->execute([
 		'username' => $username
 	]);
 	$databaseUser = $selectPasswordStatement->fetch();
 
-	if (!password_verify($password, $databaseUser['passoword'])) {
+	if (!password_verify($password, $databaseUser['password'])) {
 		echo json_encode([
 			'status' => false,
 			'message' => 'wrong password'
 		]);
 	} else {
-		$updatePasswordStatement = "UPDATE `Users` SET `passoword` = :password WHERE `Users`.`id` = :id";
+		$updatePasswordStatement = "UPDATE `users` SET `password` = :password WHERE `users`.`id` = :id";
 		$prepareStatement = $connection->prepare($updatePasswordStatement);
 		$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 		$result = $prepareStatement->execute([

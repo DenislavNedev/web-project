@@ -15,7 +15,11 @@ class User {
 		$this->name = $name;
 		$this->email = $email;
 		$this->role = $role;
-		$this->facultyNumber = $facultyNumber;
+		if ($this->role == 'student') {
+			$this->facultyNumber = $facultyNumber;
+		} else {
+			$this->facultyNumber = NULL;
+		}
 		$this->password = $password;
 	}
 
@@ -25,15 +29,15 @@ class User {
 		$dbHandle = new DatabaseConnection();
 		$connection = $dbHandle->getConnection();
 
-		$sqlInsertStatement = "INSERT INTO `Users` (`id`, `username`, `name`, `email`, `role`, `facultyNumber`, `passoword`) VALUES (NULL, :username, :name, :email, :role, :facultyNumber, :passoword)";
+		$sqlInsertStatement = "INSERT INTO `users` (`id`, `username`, `name`, `email`, `role`, `facultyNumber`, `password`) VALUES (NULL, :username, :name, :email, :role, :facultyNumber, :password)";
 		$prepareStatement = $connection->prepare($sqlInsertStatement);
 		$result = $prepareStatement->execute([
 			'username' => $this->username,
 			'name' => $this->name,
 			'email' => $this->email,
 			'role' => $this->role,
-			'facultyNumber' => (int)$this->facultyNumber,
-			'passoword' => $this->password
+			'facultyNumber' => $this->facultyNumber,
+			'password' => $this->password
 		]);
 
 		$response = null;
