@@ -64,3 +64,21 @@
 
 All of the configurations like database access credentials, usernames and passwords should be saved in different configuration files.
 
+DatabaseConnection.php contains the desired code to use PDO library with connection to the database out of the box. To use that class you should only create an instance and invoke the getConnection() method on it as follows:
+
+```php
+$database = new DatabaseConnection();
+$connection = $database->getConnection();
+```
+
+**In order to use DatabaseConnection class properly, there should be a config.php file in the php/ foder. It's content should be:**
+
+```php
+<?php 
+
+$dbUser = 'your phpMyAdmin username';
+$dbPass = 'your phpMyAdmin password';
+
+?>
+```
+
