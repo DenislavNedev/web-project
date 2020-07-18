@@ -4,13 +4,6 @@ CREATE TABLE `web-planner`.`events`
 (`id`)) ENGINE = InnoDB;
 
 ALTER TABLE `events`
-ADD FOREIGN KEY
-(`id`) REFERENCES `users`
-(`id`) ON
-DELETE RESTRICT ON
-UPDATE RESTRICT;
-
-ALTER TABLE `events`
 ADD `start` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `name`,
 ADD UNIQUE
 (`start`);
@@ -21,3 +14,14 @@ end` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `start`,
 ADD UNIQUE
 (`
 end`);
+
+ALTER TABLE `events`
+ADD `subject` VARCHAR
+(100) NOT NULL AFTER `name`;
+
+ALTER TABLE `events`
+ADD FOREIGN KEY
+(`facultyNumber`) REFERENCES `users`
+(`facultyNumber`) ON
+DELETE RESTRICT ON
+UPDATE RESTRICT;

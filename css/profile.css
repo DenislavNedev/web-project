@@ -7,15 +7,6 @@
     text-align: center;
 }
 
-.orange-buttons {
-	height: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #fa7900;
-    color: #ffffff;
-    border: none;
-}
-
 #username, #name, #email {
 	margin-right: 10px;
 	margin-top: 5px;

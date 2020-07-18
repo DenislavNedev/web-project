@@ -16,7 +16,14 @@ CREATE TABLE `Users`
 (8) COLLATE utf8mb4_unicode_ci NOT NULL,
  `facultyNumber` int NOT NULL,
  `passoword` text COLLATE utf8mb4_unicode_ci NOT NULL,
- PRIMARY KEY (`id`)
+ PRIMARY KEY
+(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 
-ALTER TABLE `Users` ADD UNIQUE( `username`);
+ALTER TABLE `Users`
+ADD UNIQUE
+( `username`);
+
+ALTER TABLE `Users`
+ADD UNIQUE
+( `facultyNumber`);

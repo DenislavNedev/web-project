@@ -72,3 +72,12 @@
     border-color: #fa7900;
     box-shadow: 0px 0px 10px #fa7900;
   }
+
+.orange-buttons {
+	  height: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fa7900;
+    color: #ffffff;
+    border: none;
+}
