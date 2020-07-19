@@ -51,6 +51,10 @@
     overflow: auto;
   }
 
+  #add-slots-menu-item {
+      display: none;
+  }
+
   .nav-item {
     display: inline-block;
     text-decoration: none;
