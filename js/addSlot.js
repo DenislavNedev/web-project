@@ -20,6 +20,13 @@ function setMinDate() {
 }
 setMinDate();
 
+function isEndHourBeforeStartHour() {
+  return (
+    document.getElementById("add-slot-time-end").value <
+    document.getElementById("add-slot-time-start").value
+  );
+}
+
 function areThereEmptyFields() {
   return (
     document.getElementById("add-slot-name").value === EMPTY_FIELD ||
@@ -32,10 +39,11 @@ function areThereEmptyFields() {
 
 addSlotBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  //TODO add end hour not before start hour
 
   if (areThereEmptyFields()) {
     showErrorMessage("Error! Empty Fields! All Fields Are Required!");
+  } else if (isEndHourBeforeStartHour()) {
+    showErrorMessage("Error! End hour is before start hour!");
   } else {
     hideErrorMessage();
     const slot = {
