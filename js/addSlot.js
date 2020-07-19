@@ -3,6 +3,23 @@
 const addSlotBtn = document.getElementById("add-slot-button");
 const EMPTY_FIELD = "";
 
+function setMinDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+
+  today = yyyy + "-" + mm + "-" + dd;
+  document.getElementById("add-slot-date").setAttribute("min", today);
+}
+setMinDate();
+
 function areThereEmptyFields() {
   return (
     document.getElementById("add-slot-name").value === EMPTY_FIELD ||
@@ -15,7 +32,6 @@ function areThereEmptyFields() {
 
 addSlotBtn.addEventListener("click", (event) => {
   event.preventDefault();
-  //TODO add min date of slot
   //TODO add end hour not before start hour
 
   if (areThereEmptyFields()) {
