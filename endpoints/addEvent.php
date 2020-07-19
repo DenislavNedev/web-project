@@ -22,6 +22,8 @@
         'end' => $end
     ]);
 
+    // var_dump($start);
+
     if ($result) {
         $response = array(
             "status" => true,

@@ -58,8 +58,7 @@
 } */
 
 .event_item {
-  margin: 5px 0;
-  padding: 8px 5px 2px 5px;
+  padding: 2px 5px 2px 5px;
   cursor: pointer;
 }
 
@@ -98,6 +97,15 @@
 }
 
 .ei_Copy {
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 27px;
+  margin-top: 18px;
+  text-align: right;
+  float: right;
+}
+
+#add-event-btn {
+  margin: auto;
+  margin-bottom: 10px;
+  display: block;
 }

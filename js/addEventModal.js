@@ -1,6 +1,6 @@
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("enroll_day1");
-var span = document.getElementsByClassName("close")[0];
+const modal = document.getElementById("myModal");
+const btn = document.getElementById("enroll_day1");
+const span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
     modal.style.display = "block";
@@ -16,3 +16,8 @@ span.onclick = function () {
 //     }
 // }
 
+const modal_title = document.getElementById("modal-title");
+const header_title = document.getElementById("header-title").innerText;
+const date = document.getElementById("date").innerText;
+
+modal_title.innerText = date + " " + header_title;
