@@ -3,6 +3,29 @@
 const addSlotBtn = document.getElementById("add-slot-button");
 const EMPTY_FIELD = "";
 
+const modal = document.getElementById("successModal");
+
+const addAnotherSlot = document.getElementById("add-another-slot-button");
+const goToCalendar = document.getElementById("go-to-calendar-button");
+
+//Close modal
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        document.getElementById("add-slots-form").reset();
+    }
+}
+
+addAnotherSlot.addEventListener("click", (event) => {
+  event.preventDefault();
+  location.reload()
+});
+
+goToCalendar.addEventListener("click", (event) => {
+  event.preventDefault();
+  location.replace("calendar.html")
+});
+
 function setMinDate() {
   var today = new Date();
   var dd = today.getDate();
@@ -66,6 +89,7 @@ const passSlotData = (slotData) => {
     .then((response) => response.json())
     .then((response) => {
       if (response.status) {
+        modal.style.display = "block";
         console.log("Succesfull added new slot!");
       } else {
         showErrorMessage(response.message);
