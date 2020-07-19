@@ -11,7 +11,7 @@ window.onload = (event) => {
 		.then(response => response.json())
 		.then(response => {
 			if (!response.status) {
-				console.log('Something went wrong!');
+				window.location.replace('../views/login.html');
 			} else {
 				document.getElementById('welcome-prompt').innerText += (' ' + response.name);
 				document.getElementById('username').innerText += (' ' + response.username);
@@ -21,7 +21,7 @@ window.onload = (event) => {
 					const profile = document.getElementById('profile');
 					const facultyNumberNode = document.createElement('p');
 					facultyNumberNode.setAttribute('id', 'facultyNumber');
-					const facultyNumberText = document.createTextNode('Faculty Number: ' + response.facultyNumber);
+					const facultyNumberText = document.createTextNode('Faculty number: ' + response.facultyNumber);
 					facultyNumberNode.appendChild(facultyNumberText);
 					insertAfter(document.getElementById('role'), facultyNumberNode);
 				}
@@ -62,32 +62,6 @@ const showSnackbar = (message) => {
 		location.reload();
 	}, 2000);
 }
-
-const changeUsernameButton = document.getElementById('change-username-button');
-changeUsernameButton.addEventListener('click', (event) => {
-	event.preventDefault();
-
-	changeUsernameButton.classList.add('hidden');
-	const usernameForm = document.getElementById('username-form');
-	usernameForm.classList.remove('hidden');
-	const saveNewUsernameButton = usernameForm.childNodes[3];
-	saveNewUsernameButton.addEventListener('click', (event) => {
-		console.log('clicked username');
-	});
-})
-
-const changeEmailButton = document.getElementById('change-email-button');
-changeEmailButton.addEventListener('click', (event) => {
-	event.preventDefault();
-
-	changeEmailButton.classList.add('hidden');
-	const emailForm = document.getElementById('email-form');
-	emailForm.classList.remove('hidden');
-	const saveNewEmailButton = emailForm.childNodes[3];
-	saveNewEmailButton.addEventListener('click', (event) => {
-		console.log('clicked email');
-	});
-});
 
 const changePasswordRequest = (userPasswords) => {
 	fetch('../endpoints/changePassword.php', {

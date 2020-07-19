@@ -1,13 +1,18 @@
+#profile {
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
 #logout-button {
     float: right;
 }
 
 #welcome-prompt {
-    /* font-size: 2em; */
     text-align: center;
 }
 
-#username, #name, #email {
+#username, #name, #email, #role, #facultyNumber {
+	display: block;
 	margin-right: 10px;
 	margin-top: 5px;
 }
