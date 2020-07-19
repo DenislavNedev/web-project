@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/add-slot.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script type="text/javascript" src="../js/login.js" defer></script>
+    <title>Presentation Planner (or smth like that)</title>
+</head>
+
+<body class="center">
+    <header class="logo-header container">
+        <img id="logo" src="../img/logo.png"></img>
+        <p id="logo-title">Schedule it</p>
+    </header>
+    <nav class="nav" id="navigation">
+        <a class="nav-item" href="profile.html">Profile</a>
+        <a class="nav-item" href="calendar.html">Calendar</a>
+        <a class="nav-item" href="add-slot.html">Add slots</a>
+    </nav>
+    <main>
+        <div class="panel-forms add-slots-content">
+            <section id="add-slots-panel" class="panels">
+                <article id="add-slots-content">
+                    <form action="" id="add-slots-form">
+                        <fieldset id="add-slots-inputs">
+                            <legend class="panel-heading">Add slot</legend>
+                            <input type="text" name="add-slot-name" id="add-slot-name" placeholder="Name" required>
+                            <input type="date" id="add-slot-date" name="add-slot-date" required>
+                            <input type="time" id="add-slot-time" name="add-slot-time" required>
+
+                            <div id="add-slot-failure" class="hidden">
+                                <strong id="add-slot-failure-text">Error!</strong>
+                            </div>
+                            <button id="add-slot-button" class="panel-buttons">Add slot</button>
+                        </fieldset>
+                    </form>
+                </article>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>
