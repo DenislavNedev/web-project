@@ -46,3 +46,7 @@
 .hidden {
   display: none;
 }
+
+#timer-heading {
+  text-align: center;
+}
