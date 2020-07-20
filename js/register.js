@@ -99,8 +99,13 @@ registerButton.addEventListener('click', (event) => {
             console.log(response.message);
             console.log(response.errorCode);
             switch(response.errorCode) {
-                case '23000': showFailureMessage('This username is already taken.\nPlease, choose another one!');
-                              break;
+                case '23000': 
+                    if (response.message.search('username') !== -1) {
+                        showFailureMessage('This username is already taken');
+                    } else if (response.message.search('facultyNumber') !== -1) {
+                        showFailureMessage('This faculty number already exists');
+                    }
+                    break;
                 default:
                     break;
             }
