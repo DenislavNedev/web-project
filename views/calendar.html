@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="../css/add-event.css">
     <link rel="stylesheet" href="../css/select-time-box.css">
-
-    <script src="../js/addEvent.js" defer></script>
-    <script src="../js/addEventModal.js" defer></script>
-    <script src="../js/showEvents.js" defer></script>
-    <script type="text/javascript" src="../js/index.js" defer></script>
 </head>
 
 <body class="center">
@@ -27,23 +22,21 @@
         <a id="add-slots-menu-item" class="nav-item" href="add-slot.html">Add slots</a>
     </nav>
     <main>
-        <div class="container">
-            <section class="calendar">
+        <div id="calendars" class="container">
+            <!-- <section class="calendar">
                 <header class="calendar_header">
                     <h1 id="header-title" class="header_title">WEB презентации</h1>
-                    <!-- <p class="header_copy">Тук може да се запишете за защитите на проекти по WEB</p> -->
                 </header>
                 <article class="calendar_plan">
                     <div class="cl_plan">
-                        <!-- <div class="cl_title">Today</div> -->
-                        <div id="date" class="cl_copy">22-04-2020</div>
-                        <i id="enroll_day1" class="cl_add">+</i>
+                        <div id="date" class="cl_copy">2020-04-22</div>
+                        <i id="enroll_day0" class="cl_add">+</i>
                     </div>
                 </article>
                 <article id="calendar-events" class="calendar_events">
                     <p class="ce_title">Current delay is...</p>
                 </article>
-            </section>
+            </section> -->
         </div>
         <!-- The Modal -->
         <section id="myModal" class="modal">
@@ -68,6 +61,12 @@
             </div>
         </section>
     </main>
+    
+    <script src="../js/showCalendars.js" defer></script>
+    <script src="../js/showEvents.js" defer></script>
+    <script src="../js/addEvent.js" defer></script>
+    <!-- <script src="../js/addEventModal.js" defer></script> -->
+    <script type="text/javascript" src="../js/index.js" defer></script>
 </body>
 
 </html>

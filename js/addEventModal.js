@@ -1,5 +1,5 @@
 const modal = document.getElementById("myModal");
-const btn = document.getElementById("enroll_day1");
+const btn = document.getElementById("enroll_day0");
 const span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function () {
