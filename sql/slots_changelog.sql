@@ -1,1 +1,5 @@
 CREATE TABLE `slots` (`id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(100) NOT NULL, `date` VARCHAR(100) NOT NULL, `start_hour` VARCHAR(100) NOT NULL,  `end_hour` VARCHAR(100) NOT NULL, `period` INT NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB;
+
+ALTER TABLE `slots` ADD `delay` INT NOT NULL DEFAULT '0' AFTER `period`;
+
+ALTER TABLE `slots` ADD UNIQUE( `date`); 

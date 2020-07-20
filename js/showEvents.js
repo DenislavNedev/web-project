@@ -13,9 +13,8 @@ setTimeout(function() {
             response.events.forEach(event => {
 
                 const date = calendar.childNodes[1].childNodes[0].childNodes[0].innerText;
-                
                 if (event.start.split(" ")[0] == date) {
-
+                    console.log(event.start.split(" ")[0] + ' - ' + date);
                     const event_item = document.createElement("div");
                     event_item.setAttribute("class", "event_item");
                     const event_dot = document.createElement("div");
@@ -27,10 +26,7 @@ setTimeout(function() {
 
                     event_title.innerText = event.subject + ", " + event.name;
                     time.innerText = new Date(event.start).getHours() + ":" + (new Date(event.start).getMinutes() < 10 ? '0' : '') + new Date(event.start).getMinutes() + " - " + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes();
-
-                    // console.log(new Date(event.start));
-
-                    const calendar_events = document.getElementById("calendar-events");
+                    const calendar_events = calendar.childNodes[2];
 
                     event_item.appendChild(event_dot);
                     event_item.appendChild(event_title);
