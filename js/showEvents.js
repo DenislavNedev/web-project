@@ -35,8 +35,10 @@ setTimeout(function() {
                     event_item.addEventListener('click', (e) => {
                         e.preventDefault();
                         
-                        const queryString = '?date=' + calendar.childNodes[1].childNodes[0].childNodes[0].innerText + '&end=' + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes() + '&subject=' + event.subject + '&presenter=' + event.name;
-                        window.location.href = "../views/timer.html" + queryString;
+                        if(event.start.split(" ")[0] === getToday()) {
+                            const queryString = '?date=' + calendar.childNodes[1].childNodes[0].childNodes[0].innerText + '&end=' + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes() + '&subject=' + event.subject + '&presenter=' + event.name;
+                            window.location.href = "../views/timer.html" + queryString;
+                        }
                     });
                 }
             });
@@ -45,3 +47,13 @@ setTimeout(function() {
     });
     }
 , 500);
+
+function getToday() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    return today
+}
