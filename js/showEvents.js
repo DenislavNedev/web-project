@@ -3,8 +3,8 @@
 setTimeout(function() {
     const calendars = document.querySelectorAll(".calendar");
     
-    console.log(calendars);
-    console.log(calendars.length);
+    // console.log(calendars);
+    // console.log(calendars.length);
 
     calendars.forEach(calendar => {
         fetch('../endpoints/getEvents.php', { method: 'GET' })
@@ -14,7 +14,6 @@ setTimeout(function() {
 
                 const date = calendar.childNodes[1].childNodes[0].childNodes[0].innerText;
                 if (event.start.split(" ")[0] == date) {
-                    console.log(event.start.split(" ")[0] + ' - ' + date);
                     const event_item = document.createElement("div");
                     event_item.setAttribute("class", "event_item");
                     const event_dot = document.createElement("div");

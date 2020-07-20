@@ -79,13 +79,13 @@ stop.addEventListener('click', (event) => {
 
     let delay = 0;
     const now = new Date();
-    console.log('Now: ' + now);
+    // console.log('Now: ' + now);
     const endTimestamp = new Date(date.split('-')[0], parseInt(date.split('-')[1] - 1), date.split('-')[2], end.split(':')[0], end.split(':')[1]);
-    console.log('End: ' + endTimestamp);
+    // console.log('End: ' + endTimestamp);
     const timestampsDifference = now - endTimestamp;
     const differenceInMinutes = timestampsDifference / 60000;
     delay = differenceInMinutes > 0 ? differenceInMinutes : 0;
-    console.log('Delay (in minutes): ' + parseInt(delay));
+    // console.log('Delay (in minutes): ' + parseInt(delay));
 
     if (delay > 0) {
 
