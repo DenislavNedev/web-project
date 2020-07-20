@@ -85,3 +85,12 @@
     color: #ffffff;
     border: none;
 }
+
+#footer {
+  text-align: center;
+  margin: 45px 0px;
+  color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
