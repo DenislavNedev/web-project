@@ -64,7 +64,7 @@ addSlotBtn.addEventListener("click", (event) => {
   event.preventDefault();
 
   if (areThereEmptyFields()) {
-    showErrorMessage("Error! Empty Fields! All Fields Are Required!");
+    showErrorMessage("Error! Empty fields! All fields are required!");
   } else if (isEndHourBeforeStartHour()) {
     showErrorMessage("Error! End hour is before start hour!");
   } else {

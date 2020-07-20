@@ -29,8 +29,9 @@
                     <form action="" id="add-slots-form">
                         <fieldset id="add-slots-inputs">
                             <legend class="panel-heading">Add slot</legend>
+                            <!-- <label for="add-slot-time-name">Name:</label> -->
                             <input type="text" name="add-slot-name" id="add-slot-name" placeholder="Name" required>
-                            <label for="add-slot-time-date">Date of the slot:</label>
+                            <label for="add-slot-time-date">Date:</label>
                             <input type="date" id="add-slot-date" name="add-slot-date" required>
                             <label for="add-slot-time-start">Start hour:</label>
                             <input type="time" id="add-slot-time-start" name="add-slot-time-start" required>
@@ -51,9 +52,9 @@
         <section id="successModal" class="modal">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h2>Congratulations! You successfully added a new slot.</h2>
-                    <button class="orange-buttons" id="add-another-slot-button">Add another one</button>
-                    <button class="orange-buttons" id="go-to-calendar-button">Go to calendar</button>
+                    <h2>You successfully added a new slot.</h2>
+                    <button class="orange-buttons slots-btns" id="add-another-slot-button">Add another one</button>
+                    <button class="orange-buttons slots-btns" id="go-to-calendar-button">Go to calendar</button>
                 </div>
             </div>
         </section>
