@@ -34,6 +34,7 @@ window.onload = (event) => {
             calendar_events.setAttribute("id", "calendar-events");
             const delay = document.createElement("p");
             delay.setAttribute("class", "ce_title");
+            delay.innerText = "Current delay is " + slot.delay + ' minutes.';
 
             header_title.innerText = slot.name;;
             date.innerText = slot.date;

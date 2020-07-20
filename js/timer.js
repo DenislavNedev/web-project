@@ -1,3 +1,5 @@
+'use strict';
+
 let min, sec, ms, count, malt, salt, msalt;
 
 let stopwatch = {
@@ -75,13 +77,10 @@ stop.addEventListener('click', (event) => {
 
     stopwatch.stop();
 
-    console.log(date);
-    console.log(end);
-
     let delay = 0;
     const now = new Date();
     console.log('Now: ' + now);
-    const endTimestamp = new Date(date.split('-')[2], parseInt(date.split('-')[1] - 1), date.split('-')[0], end.split(':')[0], end.split(':')[1]);
+    const endTimestamp = new Date(date.split('-')[0], parseInt(date.split('-')[1] - 1), date.split('-')[2], end.split(':')[0], end.split(':')[1]);
     console.log('End: ' + endTimestamp);
     const timestampsDifference = now - endTimestamp;
     const differenceInMinutes = timestampsDifference / 60000;
@@ -101,7 +100,12 @@ stop.addEventListener('click', (event) => {
         })
         .then(response => response.json())
         .then(response => {
-            console.log(response);
+            if (response.status) {
+                // window.location.href = '../views/calendar.html';
+            } else {
+                // show error
+                console.log(response);
+            }
         });
     }
 });

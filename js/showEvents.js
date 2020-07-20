@@ -32,6 +32,13 @@ setTimeout(function() {
                     event_item.appendChild(event_title);
                     event_item.appendChild(time);
                     calendar_events.appendChild(event_item);
+
+                    event_item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        const queryString = '?date=' + calendar.childNodes[1].childNodes[0].childNodes[0].innerText + '&end=' + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes() + '&subject=' + event.subject + '&presenter=' + event.name;
+                        window.location.href = "../views/timer.html" + queryString;
+                    });
                 }
             });
 

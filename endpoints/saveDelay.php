@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 
     $date = $delayObject['date'];
     $delay = $delayObject['delay'];
-    $formattedDate = explode('-', $date)[2] . '-' . explode('-', $date)[1] . '-'.  explode('-', $date)[0];
+    $formattedDate = explode('-', $date)[0] . '-' . explode('-', $date)[1] . '-'.  explode('-', $date)[2];
 
     require_once ".././php/DatabaseConnection.php";
 
