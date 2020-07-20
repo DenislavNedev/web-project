@@ -55,44 +55,50 @@ setTimeout(function() {
 
             const addEventButton = document.getElementById('add-event-btn');
             addEventButton.addEventListener('click', (event) => {
-                let time = document.getElementById("select-time");
-                let selected_time = time.options[time.selectedIndex].innerText;
-                let start_time = selected_time.split("-")[0].trim();
-                let end_time = selected_time.split("-")[1].trim();
                 const subject = document.getElementById("subject").value;
 
-                let start_timestamp = new Date(calendarDate.split("-")[0], parseInt(calendarDate.split("-")[1]) - 1, calendarDate.split("-")[2], start_time.split(":")[0], start_time.split(":")[1]);
-                let end_timestamp = new Date(calendarDate.split("-")[0], parseInt(calendarDate.split("-")[1]) - 1, calendarDate.split("-")[2], end_time.split(":")[0], end_time.split(":")[1]);
+                if(subject === ""){ 
+                    showErrorMessage("Subject field is empty!");
+                } else {
 
-                fetch('../endpoints/getProfile.php', { method: 'GET' })
-                .then(response => response.json())
-                .then(response => {
-                    if (!response.status) {
-                        console.log('Something went wrong!');
-                    } else {
-                        if (response.role === 'student') {
-                            const username = response.username;
-        
-                            const event = {
-                                username: username,
-                                subject: subject,
-                                start: start_timestamp,
-                                end: end_timestamp
-                            }
-        
-                            fetch('../endpoints/addEvent.php', {
-                                method: 'POST',
-                                body: JSON.stringify(event)
-                            })
-                            .then(response => response.json())
-                            .then(response => {
-                                if(response.status) {
-                                    window.location.reload();
+                    let time = document.getElementById("select-time");
+                    let selected_time = time.options[time.selectedIndex].innerText;
+                    let start_time = selected_time.split("-")[0].trim();
+                    let end_time = selected_time.split("-")[1].trim();
+    
+                    let start_timestamp = new Date(calendarDate.split("-")[0], parseInt(calendarDate.split("-")[1]) - 1, calendarDate.split("-")[2], start_time.split(":")[0], start_time.split(":")[1]);
+                    let end_timestamp = new Date(calendarDate.split("-")[0], parseInt(calendarDate.split("-")[1]) - 1, calendarDate.split("-")[2], end_time.split(":")[0], end_time.split(":")[1]);
+    
+                    fetch('../endpoints/getProfile.php', { method: 'GET' })
+                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.status) {
+                            console.log('Something went wrong!');
+                        } else {
+                            if (response.role === 'student') {
+                                const username = response.username;
+            
+                                const event = {
+                                    username: username,
+                                    subject: subject,
+                                    start: start_timestamp,
+                                    end: end_timestamp
                                 }
-                            })
+            
+                                fetch('../endpoints/addEvent.php', {
+                                    method: 'POST',
+                                    body: JSON.stringify(event)
+                                })
+                                .then(response => response.json())
+                                .then(response => {
+                                    if(response.status) {
+                                        window.location.reload();
+                                    }
+                                })
+                            }
                         }
-                    }
-                });
+                    });
+                }
             });
         });
     });
@@ -133,3 +139,11 @@ function createTimeSlotString(startSeconds, endSeconds) {
       new Date(endSeconds * 1000).toISOString().substr(11, 5)
     );
 }
+const showErrorMessage = (message) => {
+    document.getElementById("add-event-general-error").classList.remove("hidden");
+    document.getElementById("add-event-general-error-text").innerText = message;
+};
+  
+  function hideErrorMessage() {
+    document.getElementById("add-event-general-error").classList.add("hidden");
+  }
