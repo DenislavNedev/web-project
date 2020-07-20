@@ -59,6 +59,7 @@ start.addEventListener('click', (event) => {
     event.preventDefault();
 
     stopwatch.start();
+    start.classList.add('hidden');
 });
 
 const queryString = window.location.search;
@@ -76,6 +77,7 @@ stop.addEventListener('click', (event) => {
     event.preventDefault();
 
     stopwatch.stop();
+    start.classList.remove('hidden');
 
     let delay = 0;
     const now = new Date();
