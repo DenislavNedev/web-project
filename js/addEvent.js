@@ -19,7 +19,12 @@ setTimeout(function() {
             const span = document.getElementsByClassName("close")[0];
             span.onclick = function () {
                 modal.style.display = "none";
+                
+                document.getElementById("add-event-general-error").classList.add("hidden");
+                modal.style.animation = '';
+                modal.style.animationIterationCount = '';
             }
+            
             const modal_title = document.getElementById("modal-title");
             modal_title.innerText = calendarDate + " " + calendarName;
             
@@ -57,8 +62,9 @@ setTimeout(function() {
             addEventButton.addEventListener('click', (event) => {
                 const subject = document.getElementById("subject").value;
 
-                if(subject === ""){ 
+                if (subject === "") {
                     showErrorMessage("Subject field is empty!");
+                    addShakeEffect(modal);
                 } else {
 
                     let time = document.getElementById("select-time");
@@ -75,27 +81,25 @@ setTimeout(function() {
                         if (!response.status) {
                             console.log('Something went wrong!');
                         } else {
-                            if (response.role === 'student') {
-                                const username = response.username;
-            
-                                const event = {
-                                    username: username,
-                                    subject: subject,
-                                    start: start_timestamp,
-                                    end: end_timestamp
-                                }
-            
-                                fetch('../endpoints/addEvent.php', {
-                                    method: 'POST',
-                                    body: JSON.stringify(event)
-                                })
-                                .then(response => response.json())
-                                .then(response => {
-                                    if(response.status) {
-                                        window.location.reload();
-                                    }
-                                })
+                            const username = response.username;
+        
+                            const event = {
+                                username: username,
+                                subject: subject,
+                                start: start_timestamp,
+                                end: end_timestamp
                             }
+        
+                            fetch('../endpoints/addEvent.php', {
+                                method: 'POST',
+                                body: JSON.stringify(event)
+                            })
+                            .then(response => response.json())
+                            .then(response => {
+                                if(response.status) {
+                                    window.location.reload();
+                                }
+                            })
                         }
                     });
                 }
@@ -144,6 +148,15 @@ const showErrorMessage = (message) => {
     document.getElementById("add-event-general-error-text").innerText = message;
 };
   
-  function hideErrorMessage() {
+function hideErrorMessage() {
     document.getElementById("add-event-general-error").classList.add("hidden");
-  }
+}
+
+function addShakeEffect(elem) {
+    elem.style.animation = 'shake 0.3s';
+    elem.style.animationIterationCount = '1s';
+}
+
+function clearShakeEffect(elem) {
+
+}

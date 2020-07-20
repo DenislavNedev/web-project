@@ -84,7 +84,7 @@ input {
 }
 
 #add-slot-failure {
-    color: red;
+    color: #ea4335;
     margin-top: 15px;
     text-align: center;
     margin-bottom: 5px;

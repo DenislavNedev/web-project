@@ -69,10 +69,10 @@
   }
   
 #add-event-general-error {
-  color: red;
+  color: #ea4335;
   margin-top: 15px;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .hidden {
