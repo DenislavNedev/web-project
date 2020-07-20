@@ -25,6 +25,7 @@ setTimeout(function() {
             
             // here add available slots in the dropdown
             const select_time = document.getElementById("select-time");
+            select_time.innerHTML = '';
 
             fetch('../endpoints/getSlots.php', { method: 'GET' })
             .then(response => response.json())
@@ -34,9 +35,17 @@ setTimeout(function() {
                     if (calendarDate == slot.date) {
                         let all_possible_events = calculateTimeSlots(slot.start_hour, slot.end_hour, slot.period);
 
+                        let taken_events = calendar.childNodes[2].querySelectorAll("time");
+
                         all_possible_events.forEach(event => {
                             const option = document.createElement("option");
                             option.innerText = event;
+
+                            taken_events.forEach(taken_event => {
+                                if (event == taken_event.innerText) {
+                                    option.setAttribute("disabled", "true");
+                                }
+                            });
 
                             select_time.appendChild(option);
                         })

@@ -24,7 +24,7 @@ setTimeout(function() {
                     time.setAttribute("class", "ei_Copy");
 
                     event_title.innerText = event.subject + ", " + event.name;
-                    time.innerText = new Date(event.start).getHours() + ":" + (new Date(event.start).getMinutes() < 10 ? '0' : '') + new Date(event.start).getMinutes() + " - " + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes();
+                    time.innerText = (new Date(event.start).getHours() < 10 ? '0' : '') + new Date(event.start).getHours() + ":" + (new Date(event.start).getMinutes() < 10 ? '0' : '') + new Date(event.start).getMinutes() + " - " + (new Date(event.end).getHours() < 10 ? '0' : '') + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes();
                     const calendar_events = calendar.childNodes[2];
 
                     event_item.appendChild(event_dot);
