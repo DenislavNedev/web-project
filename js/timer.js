@@ -89,7 +89,7 @@ stop.addEventListener('click', (event) => {
     delay = differenceInMinutes > 0 ? differenceInMinutes : 0;
     // console.log('Delay (in minutes): ' + parseInt(delay));
 
-    if (delay > 0) {
+    // if (delay > 0) {
 
         const delayObject = {
             date: date,
@@ -109,5 +109,5 @@ stop.addEventListener('click', (event) => {
                 console.log(response);
             }
         });
-    }
+    // }
 });
