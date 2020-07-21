@@ -6,45 +6,60 @@
 .
 ├── css
 │   ├── add-event.css
+│   ├── add-slot.css
 │   ├── calendar.css
 │   ├── index.css
 │   ├── login-register.css
 │   ├── profile.css
 │   ├── radio-buttons.css
 │   ├── select-time-box.css
-│   └── snackbar.css
+│   ├── snackbar.css
+│   └── timer.css
 ├── endpoints
+│   ├── addEvent.php
+│   ├── addSlot.php
 │   ├── changePassword.php
 │   ├── checkLogin.php
+│   ├── getEvents.php
 │   ├── getProfile.php
+│   ├── getSlots.php
 │   ├── login.php
 │   ├── logout.php
-│   └── register.php
+│   ├── register.php
+│   └── saveDelay.php
 ├── img
 │   ├── 66-512.png
 │   └── logo.png
 ├── js
-│   ├── addEventModal.js
+│   ├── addEvent.js
+│   ├── addSlot.js
 │   ├── index.js
 │   ├── login.js
 │   ├── logout.js
 │   ├── profile.js
-│   └── register.js
+│   ├── register.js
+│   ├── showCalendars.js
+│   ├── showEvents.js
+│   └── timer.js
 ├── php
 │   ├── config.php
 │   ├── DatabaseConnection.php
+│   ├── Event.php
 │   ├── Profile.php
 │   └── User.php
 ├── sql
 │   ├── database_scheme.sql
 │   ├── events_changelog.sql
+│   ├── invalid_datetime_hack.sql
+│   ├── slots_changelog.sql
 │   └── users_changelog.sql
 ├── views
-│   ├── add-event.html
+│   ├── add-slot.html
 │   ├── calendar.html
 │   ├── login.html
 │   ├── profile.html
-│   └── register.html
+│   ├── register.html
+│   └── timer.html
 ├── index.html
 └── README.md
 
