@@ -13,7 +13,7 @@
 
     $con = $dbCon->getConnection();
 
-    $sqlInsertStatement = "INSERT INTO `events` (`id`, `username`, `subject`, `start`, `end`) VALUES (NULL, :username, :subject, :start, :end)";
+    $sqlInsertStatement = "INSERT INTO `events` (`id`, `username`, `subject`, `start`, `end`) VALUES (NULL, :username, :subject, DATE_FORMAT(STR_TO_DATE(:start, '%Y-%m-%dT%H:%i:%s.000Z'), '%Y-%m-%d %H:%i:%s'), DATE_FORMAT(STR_TO_DATE(:end, '%Y-%m-%dT%H:%i:%s.000Z'), '%Y-%m-%d %H:%i:%s')))";
     $prepareStatement = $con->prepare($sqlInsertStatement);
     $result = $prepareStatement->execute([
         'username' => $username,
