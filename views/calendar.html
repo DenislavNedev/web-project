@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <title>SCHEDULE IT</title>
 
     <link rel="icon" href="../img/logo.png" type="image/x-icon">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="../css/add-event.css">
     <link rel="stylesheet" href="../css/select-time-box.css">
-    
+
 
     <script src="../js/showCalendars.js" defer></script>
     <script src="../js/showEvents.js" defer></script>
@@ -58,12 +58,20 @@
                     <select id="select-time">
                     </select>
                     <p>Enter your subject:</p>
-                    <input class="center" type="text" id="subject" placeholder="Subject" required>
+                    <input class="center event-input" type="text" id="subject" placeholder="Subject" required>
+                    <p>Enter description:</p>
+                    <textarea class="center event-input" type="text" id="description-input" maxlength="120" rows="5"
+                        placeholder="Description (max 120 characters)"></textarea>
+                    <p>Enter presentation file url:</p>
+                    <input class="center event-input" type="text" id="presentation_url-input"
+                        placeholder="Presentaiton file URL">
+                    <p>Enter meeting url:</p>
+                    <input class="center event-input" type="text" id="meeting_url-input" placeholder="Meeting URL">
                     <button id="add-event-btn" class="orange-buttons">Save</button>
                 </div>
                 <div id="add-event-general-error" class="hidden">
                     <strong id="add-event-general-error-text">Error!</strong>
-                </div>    
+                </div>
             </div>
         </section>
         <!-- Verification Code Modal -->
@@ -74,12 +82,13 @@
                     <h2 id="verification-modal-title">Enter verification code</h2>
                 </div>
                 <div class="modal-body">
-                    <input class="center" type="text" id="verification-code-input" placeholder="Verification Code" required>
+                    <input class="center" type="text" id="verification-code-input" placeholder="Verification Code"
+                        required>
                     <button id="check-verification-code-btn" class="orange-buttons">Continue</button>
                 </div>
                 <div id="verification-code-error" class="hidden">
                     <strong id="verification-code-error-text">Error!</strong>
-                </div>    
+                </div>
             </div>
         </section>
     </main>

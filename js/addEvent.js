@@ -74,7 +74,10 @@ setTimeout(function() {
     
                     let start_timestamp = new Date(calendarDate.split("-")[0], parseInt(calendarDate.split("-")[1]) - 1, calendarDate.split("-")[2], start_time.split(":")[0], start_time.split(":")[1]);
                     let end_timestamp = new Date(calendarDate.split("-")[0], parseInt(calendarDate.split("-")[1]) - 1, calendarDate.split("-")[2], end_time.split(":")[0], end_time.split(":")[1]);
-    
+                    let description = document.getElementById("description-input").value;
+                    let presentation_url =  document.getElementById("presentation_url-input").value;
+                    let meeting_url = document.getElementById("meeting_url-input").value;
+
                     fetch('../endpoints/getProfile.php', { method: 'GET' })
                     .then(response => response.json())
                     .then(response => {
@@ -82,10 +85,15 @@ setTimeout(function() {
                             console.log('Something went wrong!');
                         } else {
                             const username = response.username;
-        
+                            const fn_number = response.facultyNumber;
+
                             const event = {
                                 username: username,
+                                fn_number: fn_number,
                                 subject: subject,
+                                description: description,
+                                presentation_url: presentation_url,
+                                meeting_url: meeting_url,
                                 start: start_timestamp,
                                 end: end_timestamp
                             }

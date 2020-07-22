@@ -6,6 +6,10 @@
     $subject = $eventData["subject"];
     $start = $eventData["start"];
     $end = $eventData["end"];
+    $description = $eventData["description"];
+    $presentation_url = $eventData["presentation_url"];
+    $meeting_url = $eventData["meeting_url"];
+    $fn_number = $eventData["fn_number"];
 
     require_once '../php/DatabaseConnection.php';
 
@@ -13,11 +17,15 @@
 
     $con = $dbCon->getConnection();
 
-    $sqlInsertStatement = "INSERT INTO `events` (`id`, `username`, `subject`, `start`, `end`) VALUES (NULL, :username, :subject, :start, :end)";
+    $sqlInsertStatement = "INSERT INTO `events` (`id`, `username`, `fn_number`, `subject`, `description`, `presentation_url`, `meeting_url`, `start`, `end`) VALUES (NULL, :username, :fn_number, :subject, :description, :presentation_url, :meeting_url, :start, :end)";
     $prepareStatement = $con->prepare($sqlInsertStatement);
     $result = $prepareStatement->execute([
         'username' => $username,
+        'fn_number' => $fn_number,
         'subject' => $subject,
+        'description' => $description,
+        'presentation_url' => $presentation_url,
+        'meeting_url' => $meeting_url,
         'start' => $start,
         'end' => $end
     ]);

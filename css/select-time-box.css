@@ -94,13 +94,13 @@
    }
 }
 
-#subject {
+.event-input {
     margin-bottom: 10px;
     height: 25px;
     width: 20rem;
 }
 
-#subject:focus {
+.event-input:focus {
     outline: none !important;
     border: 0.4px solid #fa7900;
     box-shadow: 0 0 8px #fa7900;
