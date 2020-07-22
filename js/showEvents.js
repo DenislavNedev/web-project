@@ -23,7 +23,30 @@ setTimeout(function() {
                     const time = document.createElement("time");
                     time.setAttribute("class", "ei_Copy");
 
-                    event_title.innerText = event.subject + ", " + event.name;
+                    event_title.innerText = event.subject + ", " + event.name  
+                    let description = ""
+                    let presentationUrl = ""
+                    let meetingURL = ""
+                    let facultyNumber = ""
+
+                    if (!isEmpty(event.description)) {
+                         description = "\n Description: " + event.description;
+                    }
+
+                    if (!isEmpty(event.presentation_url)) {
+                        presentationUrl = "\n Presentation URL: " + event.presentation_url;
+                    }
+
+                    if (!isEmpty(event.meeting_url)) {
+                        meetingURL = "\n Meeting URL: " + event.meeting_url;
+                    }
+
+                    if (!isEmpty(event.fn_number)) {
+                        facultyNumber = "\n Faculty Number: " + event.fn_number;
+                    }
+              
+                    event_title.innerText = event.subject + ", " + event.name + description + presentationUrl + meetingURL + facultyNumber
+
                     time.innerText = (new Date(event.start).getHours() < 10 ? '0' : '') + new Date(event.start).getHours() + ":" + (new Date(event.start).getMinutes() < 10 ? '0' : '') + new Date(event.start).getMinutes() + " - " + (new Date(event.end).getHours() < 10 ? '0' : '') + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes();
                     const calendar_events = calendar.childNodes[2];
 
@@ -47,6 +70,10 @@ setTimeout(function() {
     });
     }
 , 500);
+
+function isEmpty(stringValue){
+    return stringValue === null || stringValue ===  ""  || stringValue === undefined;
+}
 
 function showVerificationCodeModal(queryString) {
     const verificationModal = document.getElementById("verification-modal");

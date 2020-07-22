@@ -6,7 +6,7 @@
 
     $con = $dbCon->getConnection();
 
-    $sqlSelectStatement = "SELECT name, subject, CONVERT_TZ(start, '+00:00', '+03:00') as start, CONVERT_TZ(end, '+00:00', '+03:00') as end FROM `events` JOIN `users` ON events.username = users.username ORDER BY start ASC";
+    $sqlSelectStatement = "SELECT name, fn_number, subject, description, presentation_url, meeting_url, CONVERT_TZ(start, '+00:00', '+03:00') as start, CONVERT_TZ(end, '+00:00', '+03:00') as end FROM `events` JOIN `users` ON events.username = users.username ORDER BY start ASC";
     $prepareStatement = $con->prepare($sqlSelectStatement);
     $result = $prepareStatement->execute([]);
 
