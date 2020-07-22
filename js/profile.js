@@ -25,6 +25,9 @@ window.onload = (event) => {
 					facultyNumberNode.appendChild(facultyNumberText);
 					insertAfter(document.getElementById('role'), facultyNumberNode);
 				}
+				else if (response.role === 'teacher') {
+					document.getElementById("generate-verification-code-button").classList.remove("hidden");
+				}
 			}
 		});
 };
@@ -42,6 +45,14 @@ logoutButton.addEventListener('click', (event) => {
 				console.log('Logout failed!');
 			}
 		});
+});
+
+const generateCodeButton = document.getElementById('generate-verification-code-button');
+generateCodeButton.addEventListener('click', (event) => {
+	event.preventDefault();
+
+	document.getElementById("generated-verification-code-text").classList.remove("hidden");
+	//TODO add logic for generating and saving code
 });
 
 const showErrorMessage = (message) => {
