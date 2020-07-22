@@ -114,3 +114,26 @@
   margin-bottom: 10px;
   display: block;
 }
+
+#verification-code-input {
+  margin-bottom: 10px;
+  height: 25px;
+  width: 20rem;
+}
+
+#verification-code-input:focus {
+  outline: none !important;
+  border: 0.4px solid #fa7900;
+  box-shadow: 0 0 8px #fa7900;
+}
+
+#verification-code-error {
+  color: #ea4335;
+  margin-top: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none;
+}

@@ -37,7 +37,7 @@ setTimeout(function() {
                         
                         if(event.start.split(" ")[0] === getToday()) {
                             const queryString = '?date=' + calendar.childNodes[1].childNodes[0].childNodes[0].innerText + '&end=' + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes() + '&subject=' + event.subject + '&presenter=' + event.name;
-                            window.location.href = "../views/timer.html" + queryString;
+                            showVerificationCodeModal(queryString)
                         }
                     });
                 }
@@ -48,6 +48,46 @@ setTimeout(function() {
     }
 , 500);
 
+function showVerificationCodeModal(queryString) {
+    const verificationModal = document.getElementById("verification-modal");
+    verificationModal.style.display = "block";
+
+    const span = document.getElementById("close-verification-modal");
+    span.onclick = function () {
+        verificationModal.style.display = "none";
+        
+        document.getElementById("verification-code-error").classList.add("hidden");
+        verificationModal.style.animation = '';
+        verificationModal.style.animationIterationCount = '';
+    }
+
+    const continueButton = document.getElementById("check-verification-code-btn");
+
+    continueButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const verificationCode = document.getElementById("verification-code-input").value;        
+        if(verificationCode === "") {
+            console.log(verificationCode)
+            showVerificationCodeErrorMessage("Verification code fileds is empty!");
+            addShakeEffect(verificationModal);
+        } else {
+            hideVerificationCodeErrorMessage();
+            if (isAuthorized()) {
+                window.location.href = "../views/timer.html" + queryString;
+            } else {
+                addShakeEffect(verificationModal);
+                showVerificationCodeErrorMessage("You are not authorized to track the delay! If you think this is an error, please contact your teacher.");
+            }
+        }
+    });
+}
+
+function isAuthorized() {
+    //TODO add here logic to check if verification code is correct
+    return false;
+}
+
 function getToday() {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -56,4 +96,18 @@ function getToday() {
 
     today = yyyy + '-' + mm + '-' + dd;
     return today
+}
+
+const showVerificationCodeErrorMessage = (message) => {
+    document.getElementById("verification-code-error").classList.remove("hidden");
+    document.getElementById("verification-code-error-text").innerText = message;
+};
+  
+function hideVerificationCodeErrorMessage() {
+    document.getElementById("verification-code-error").classList.add("hidden");
+}
+
+function addShakeEffect(elem) {
+    elem.style.animation = 'shake 0.3s';
+    elem.style.animationIterationCount = '1s';
 }
