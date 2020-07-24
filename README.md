@@ -91,6 +91,7 @@ $connection = $database->getConnection();
 ```php
 <?php 
 
+$dbName = 'desired name of database';
 $dbUser = 'your phpMyAdmin username';
 $dbPass = 'your phpMyAdmin password';
 
