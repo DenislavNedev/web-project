@@ -63,10 +63,10 @@
                     <textarea class="center event-input" type="text" id="description-input" maxlength="120" rows="5"
                         placeholder="Description (max 120 characters)"></textarea>
                     <p>Enter presentation file url:</p>
-                    <input class="center event-input" type="text" id="presentation_url-input"
+                    <input class="center event-input" type="url" id="presentation_url-input"
                         placeholder="Presentaiton file URL">
                     <p>Enter meeting url:</p>
-                    <input class="center event-input" type="text" id="meeting_url-input" placeholder="Meeting URL">
+                    <input class="center event-input" type="url" id="meeting_url-input" placeholder="Meeting URL">
                     <button id="add-event-btn" class="orange-buttons">Save</button>
                 </div>
                 <div id="add-event-general-error" class="hidden">
@@ -81,7 +81,7 @@
                     <span class="close" id="close-verification-modal">&times;</span>
                     <h2 id="verification-modal-title">Enter verification code</h2>
                 </div>
-                <div class="modal-body">
+                <div id="verification-modal-body" class="modal-body">
                     <input class="center" type="text" id="verification-code-input" placeholder="Verification Code"
                         required>
                     <button id="check-verification-code-btn" class="orange-buttons">Continue</button>

@@ -137,3 +137,8 @@
 .hidden {
   display: none;
 }
+
+#verification-modal-body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}

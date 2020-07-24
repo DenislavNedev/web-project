@@ -14,7 +14,7 @@ class Profile {
 		$dbHandle = new DatabaseConnection();
 		$connection = $dbHandle->getConnection();
 
-		$selectStatement = $connection->prepare("SELECT username, name, email, role, facultyNumber FROM `users` WHERE username = :username");
+		$selectStatement = $connection->prepare("SELECT username, name, email, role, facultyNumber, verificationCode FROM `users` WHERE username = :username");
 		$result = $selectStatement->execute([
 			'username' => $this->username
 		]);
@@ -26,7 +26,8 @@ class Profile {
 			'name' => $databaseUser['name'],
 			'email' => $databaseUser['email'],
 			'role' => $databaseUser['role'],
-			'facultyNumber' => $databaseUser['facultyNumber']
+			'facultyNumber' => $databaseUser['facultyNumber'],
+			'verificationCode' => $databaseUser['verificationCode']
 		]);
 	}
 }

@@ -10,3 +10,5 @@ ALTER TABLE `users` ADD UNIQUE(`username`);
 ALTER TABLE `users` ADD UNIQUE(`facultyNumber`);
 
 ALTER TABLE `users` CHANGE `facultyNumber` `facultyNumber` INT NULL;
+
+ALTER TABLE `users` ADD `verificationCode` VARCHAR(100) NULL DEFAULT NULL AFTER `password`; 

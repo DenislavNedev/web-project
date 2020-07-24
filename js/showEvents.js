@@ -100,19 +100,33 @@ function showVerificationCodeModal(queryString) {
             addShakeEffect(verificationModal);
         } else {
             hideVerificationCodeErrorMessage();
-            if (isAuthorized()) {
-                window.location.href = "../views/timer.html" + queryString;
-            } else {
-                addShakeEffect(verificationModal);
-                showVerificationCodeErrorMessage("You are not authorized to track the delay! If you think this is an error, please contact your teacher.");
-            }
+
+            const verificationCode = document.getElementById("verification-code-input").value;
+            fetch('../endpoints/getAllVerificationCodes.php', { method: 'GET' })
+            .then(response => response.json())
+            .then(response => {
+                if (response.status) {
+                    let isAuthorized = false;
+                    for (let i = 0; i < response.codes.length; i++) {
+                        if (verificationCode.localeCompare(response.codes[i].verificationCode) == 0) {
+                            isAuthorized = true;
+                            window.location.href = "../views/timer.html" + queryString;
+                            break;
+                        }
+                    }
+
+                    if (!isAuthorized) {
+                        addShakeEffect(verificationModal);
+                        showVerificationCodeErrorMessage("You are not authorized to track the delay! If you think this is an error, please contact your teacher.");
+                    }
+                } else {
+                    addShakeEffect(verificationModal);
+                    showVerificationCodeErrorMessage("There was an error connecting to the database");
+                    console.log(response.message);
+                }
+            });
         }
     });
-}
-
-function isAuthorized() {
-    //TODO add here logic to check if verification code is correct
-    return false;
 }
 
 function getToday() {

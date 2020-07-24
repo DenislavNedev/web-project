@@ -26,11 +26,61 @@ window.onload = (event) => {
 					insertAfter(document.getElementById('role'), facultyNumberNode);
 				}
 				else if (response.role === 'teacher') {
-					document.getElementById("generate-verification-code-button").classList.remove("hidden");
+
+					const codeNode = document.createElement('p');
+					codeNode.setAttribute('id', 'verification-code');
+					let codeText = '';
+
+					if (response.verificationCode !== null) {
+						codeText = document.createTextNode('Verification code: ' + response.verificationCode);
+						
+					} else {
+						codeText = document.createTextNode('');
+					}
+					codeNode.appendChild(codeText);
+					insertAfter(document.getElementById('role'), codeNode);
+
+					const generateCodeButton = document.getElementById("generate-verification-code-button");
+					generateCodeButton.classList.remove("hidden");
+
+					generateCodeButton.addEventListener('click', (event) => {
+						event.preventDefault();
+
+						const generatedCode = generateCode(15);
+						codeNode.innerText = 'Verification code: ' + generatedCode;
+						const verification = {
+							code: generatedCode
+						}
+						// put request to server with code;
+						fetch('../endpoints/updateVerificationCode.php', {
+							method: 'PUT',
+							body: JSON.stringify(verification)
+						})
+						.then(response => response.json())
+						.then(response => {
+							if (response.status) {
+								showSnackbar('Successfully updated verification code!');
+							} else {
+								showSnackbar('There was an error updating your verification code. Please try again!');
+							}
+						});
+					});
 				}
 			}
 		});
 };
+
+const generateCode = (length) => {
+	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	const charactersLength = chars.length;
+	let resultCode = '';
+
+	for (let i = 0; i < length; i++) {
+		resultCode += chars.charAt(Math.floor(Math.random() * charactersLength));
+	}
+
+	return resultCode;
+}
 
 const logoutButton = document.getElementById('logout-button');
 logoutButton.addEventListener('click', (event) => {
@@ -45,14 +95,6 @@ logoutButton.addEventListener('click', (event) => {
 				console.log('Logout failed!');
 			}
 		});
-});
-
-const generateCodeButton = document.getElementById('generate-verification-code-button');
-generateCodeButton.addEventListener('click', (event) => {
-	event.preventDefault();
-
-	document.getElementById("generated-verification-code-text").classList.remove("hidden");
-	//TODO add logic for generating and saving code
 });
 
 const showErrorMessage = (message) => {
@@ -70,7 +112,7 @@ const showSnackbar = (message) => {
 	snackbar.className = 'show';
 	setTimeout(function () {
 		snackbar.className = snackbar.className.replace('show', '');
-		location.reload();
+		// location.reload();
 	}, 2000);
 }
 
