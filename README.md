@@ -20,13 +20,15 @@
 │   ├── addSlot.php
 │   ├── changePassword.php
 │   ├── checkLogin.php
+│   ├── getAllVerificationCodes.php
 │   ├── getEvents.php
 │   ├── getProfile.php
 │   ├── getSlots.php
 │   ├── login.php
 │   ├── logout.php
 │   ├── register.php
-│   └── saveDelay.php
+│   ├── saveDelay.php
+│   └── updateVerificationCode.php
 ├── img
 │   ├── 66-512.png
 │   └── logo.png
@@ -35,7 +37,6 @@
 │   ├── addSlot.js
 │   ├── index.js
 │   ├── login.js
-│   ├── logout.js
 │   ├── profile.js
 │   ├── register.js
 │   ├── showCalendars.js
@@ -48,11 +49,7 @@
 │   ├── Profile.php
 │   └── User.php
 ├── sql
-│   ├── database_scheme.sql
-│   ├── events_changelog.sql
-│   ├── invalid_datetime_hack.sql
-│   ├── slots_changelog.sql
-│   └── users_changelog.sql
+│   └── database_changelog.sql
 ├── views
 │   ├── add-slot.html
 │   ├── calendar.html
@@ -91,6 +88,7 @@ $connection = $database->getConnection();
 ```php
 <?php 
 
+$dbHost = 'localhost';
 $dbName = 'desired name of database';
 $dbUser = 'your phpMyAdmin username';
 $dbPass = 'your phpMyAdmin password';
