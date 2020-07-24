@@ -16,17 +16,18 @@
 │   ├── snackbar.css
 │   └── timer.css
 ├── endpoints
+│   ├── users
+│   │   ├── changePassword.php
+│   │   ├── checkLogin.php
+│   │   ├── getProfile.php
+│   │   ├── login.php
+│   │   ├── logout.php
+│   │   └── register.php
 │   ├── addEvent.php
 │   ├── addSlot.php
-│   ├── changePassword.php
-│   ├── checkLogin.php
 │   ├── getAllVerificationCodes.php
 │   ├── getEvents.php
-│   ├── getProfile.php
 │   ├── getSlots.php
-│   ├── login.php
-│   ├── logout.php
-│   ├── register.php
 │   ├── saveDelay.php
 │   └── updateVerificationCode.php
 ├── img
