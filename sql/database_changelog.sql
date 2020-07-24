@@ -1,43 +1,139 @@
--- ========================== Init database ============================
+-- phpMyAdmin SQL Dump
+-- version 4.9.5deb2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Jul 24, 2020 at 06:28 PM
+-- Server version: 8.0.20-0ubuntu0.20.04.1
+-- PHP Version: 7.4.3
 
-CREATE DATABASE `web-planner` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
--- =========================== Users table =============================
 
-CREATE TABLE `users`(`id` int NOT NULL AUTO_INCREMENT, `username` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL, `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL, `email` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL, `role` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL, `facultyNumber` int NOT NULL, `password` text COLLATE utf8mb4_unicode_ci NOT NULL, PRIMARY KEY(`id`)) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-ALTER TABLE `users` ADD UNIQUE(`username`);
+--
+-- Database: `web-planner`
+--
 
-ALTER TABLE `users` ADD UNIQUE(`facultyNumber`);
+-- --------------------------------------------------------
 
-ALTER TABLE `users` CHANGE `facultyNumber` `facultyNumber` INT NULL;
+--
+-- Table structure for table `events`
+--
 
-ALTER TABLE `users` ADD `verificationCode` VARCHAR(100) NULL DEFAULT NULL AFTER `password`; 
+CREATE TABLE `events` (
+  `id` int NOT NULL,
+  `username` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fn_number` varchar(130) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `subject` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(130) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `presentation_url` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meeting_url` varchar(130) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `end` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- =========================== Events table =============================
+-- --------------------------------------------------------
 
-CREATE TABLE `events` ( `id` INT NOT NULL AUTO_INCREMENT, `username` VARCHAR(10) NOT NULL, `subject` VARCHAR(100) NOT NULL, `start` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, `end` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(`id`), UNIQUE(`start`), UNIQUE(`end`)) ENGINE = InnoDB;
+--
+-- Table structure for table `slots`
+--
 
-ALTER TABLE `events` ADD FOREIGN KEY(`username`) REFERENCES `users`(`username`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+CREATE TABLE `slots` (
+  `id` int NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_hour` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `end_hour` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `period` int NOT NULL,
+  `delay` int NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-ALTER TABLE `events` ADD `fn_number` VARCHAR(130) DEFAULT NULL AFTER `username`;
+-- --------------------------------------------------------
 
-ALTER TABLE `events` ADD `description` VARCHAR(130) DEFAULT NULL AFTER `subject`;
+--
+-- Table structure for table `users`
+--
 
-ALTER TABLE `events` ADD `presentation_url` VARCHAR(200) DEFAULT NULL AFTER `description`;
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `username` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facultyNumber` int DEFAULT NULL,
+  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `verificationCode` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-ALTER TABLE `events` ADD `meeting_url` VARCHAR(130) DEFAULT NULL AFTER `presentation_url`;
+--
+-- Indexes for dumped tables
+--
 
--- =========================== Slots table =============================
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `start` (`start`),
+  ADD UNIQUE KEY `end` (`end`),
+  ADD KEY `username` (`username`);
 
-CREATE TABLE `slots` (`id` INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(100) NOT NULL, `date` VARCHAR(100) NOT NULL, `start_hour` VARCHAR(100) NOT NULL,  `end_hour` VARCHAR(100) NOT NULL, `period` INT NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB;
+--
+-- Indexes for table `slots`
+--
+ALTER TABLE `slots`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `date` (`date`);
 
-ALTER TABLE `slots` ADD `delay` INT NOT NULL DEFAULT '0' AFTER `period`;
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `facultyNumber` (`facultyNumber`);
 
-ALTER TABLE `slots` ADD UNIQUE( `date`); 
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
--- ======================= Invalid datetime fix =========================
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
-SELECT @@GLOBAL.sql_mode global, @@SESSION.sql_mode session;
-SET sql_mode = '';
-SET GLOBAL sql_mode = '';
+--
+-- AUTO_INCREMENT for table `slots`
+--
+ALTER TABLE `slots`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `events`
+--
+ALTER TABLE `events`
+  ADD CONSTRAINT `events_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
