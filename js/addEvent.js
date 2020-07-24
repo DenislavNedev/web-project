@@ -78,7 +78,7 @@ setTimeout(function() {
                     let presentation_url =  document.getElementById("presentation_url-input").value;
                     let meeting_url = document.getElementById("meeting_url-input").value;
 
-                    fetch('../endpoints/getProfile.php', { method: 'GET' })
+                    fetch('../endpoints/users/getProfile.php', { method: 'GET' })
                     .then(response => response.json())
                     .then(response => {
                         if (!response.status) {

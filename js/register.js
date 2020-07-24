@@ -65,7 +65,7 @@ registerButton.addEventListener('click', (event) => {
     } else if (!isEmailCorrect(userData.email)) {
         showFailureMessage('Email is not valid!');
     } else {
-        fetch('../endpoints/register.php', {
+        fetch('../endpoints/users/register.php', {
         method: 'POST',
         body: JSON.stringify(userData)
     })
@@ -80,7 +80,7 @@ registerButton.addEventListener('click', (event) => {
 
             // The code bellow is repeatable - need to be fixed.
             
-            fetch('../endpoints/login.php', {
+            fetch('../endpoints/users/login.php', {
                 method: 'POST',
                 body: JSON.stringify(loginUser)
             })

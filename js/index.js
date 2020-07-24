@@ -1,6 +1,6 @@
 'use strict';
 
-fetch('../endpoints/getProfile.php', { method: 'GET' })
+fetch('../endpoints/users/getProfile.php', { method: 'GET' })
 .then(response => response.json())
 .then(response => {
     if (!response.status) {

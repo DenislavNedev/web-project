@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
 	$password = $userPasswords['current'];
 	$newPassword = $userPasswords['new'];
 
-	require_once ".././php/DatabaseConnection.php";
+	require_once "../.././php/DatabaseConnection.php";
 
 	$databaseHandle = new DatabaseConnection();
 	$connection = $databaseHandle->getConnection();

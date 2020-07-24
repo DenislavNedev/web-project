@@ -12,7 +12,7 @@ if (isset($_SESSION['username'])) {
 	$username = $user['username'];
 	$password = $user['password'];
 
-	require_once ".././php/DatabaseConnection.php";
+	require_once "../.././php/DatabaseConnection.php";
 
 	$databaseHandle = new DatabaseConnection();
 	$connection = $databaseHandle->getConnection();

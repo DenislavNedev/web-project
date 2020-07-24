@@ -7,7 +7,7 @@ const insertAfter = (referenceNode, newNode) => {
 window.onload = (event) => {
 	event.preventDefault();
 
-	fetch('../endpoints/getProfile.php', { method: 'GET' })
+	fetch('../endpoints/users/getProfile.php', { method: 'GET' })
 		.then(response => response.json())
 		.then(response => {
 			if (!response.status) {
@@ -86,7 +86,7 @@ const logoutButton = document.getElementById('logout-button');
 logoutButton.addEventListener('click', (event) => {
 	event.preventDefault();
 
-	fetch('../endpoints/logout.php', { method: 'GET' })
+	fetch('../endpoints/users/logout.php', { method: 'GET' })
 		.then(response => response.json())
 		.then(response => {
 			if (response.status) {
@@ -117,7 +117,7 @@ const showSnackbar = (message) => {
 }
 
 const changePasswordRequest = (userPasswords) => {
-	fetch('../endpoints/changePassword.php', {
+	fetch('../endpoints/users/changePassword.php', {
 		method: 'POST',
 		body: JSON.stringify(userPasswords)
 	})

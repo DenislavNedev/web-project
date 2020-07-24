@@ -17,7 +17,7 @@ const showErrorMessage = (message) => {
 }
 
 const passLoginData = (userData) => {
-    fetch('../endpoints/login.php', {
+    fetch('../users/endpoints/login.php', {
         method: 'POST',
         body: JSON.stringify(userData)
     })

@@ -10,7 +10,7 @@ $facultyNumber = $registerData["facultyNumber"];
 $password = $registerData["password"];
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-require_once "../php/User.php";
+require_once "../../php/User.php";
 
 $user = new User($username, $name, $email, $role, $facultyNumber, $hashedPassword);
 $result = $user->persistUser();
