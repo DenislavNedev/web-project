@@ -63,7 +63,7 @@
 } */
 
 .event_item {
-  padding: 2px 5px 2px 5px;
+  padding: 0px 5px 10px 5px;
   cursor: pointer;
 }
 
@@ -76,7 +76,7 @@
   background-color: #fff;
 }
 
-.event_item:hover .ei_Copy, .event_item:hover .ei_Title {
+.event_item:hover .ei_Copy, .event_item:hover .ei_Title, .event_item:hover .ei_Info {
   color: #fff;
 }
 
@@ -109,9 +109,16 @@
   float: right;
 }
 
+.ei_Info {
+  font-size: 14px;
+  margin-left: 27px;
+  margin-top: 18px;
+}
+
 #add-event-btn {
   margin: auto;
   margin-bottom: 10px;
+  margin-top: 10px;
   display: block;
 }
 

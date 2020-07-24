@@ -22,37 +22,36 @@ setTimeout(function() {
                     event_title.setAttribute("class", "ei_Title");
                     const time = document.createElement("time");
                     time.setAttribute("class", "ei_Copy");
+                    const event_info = document.createElement("time");
+                    event_info.setAttribute("class", "ei_Info");
 
-                    event_title.innerText = event.subject + ", " + event.name  
-                    let description = ""
-                    let presentationUrl = ""
-                    let meetingURL = ""
-                    let facultyNumber = ""
+                    let description = "";
+                    let presentationUrl = "";
+                    let meetingURL = "";
+                    let facultyNumber = "";
 
                     if (!isEmpty(event.description)) {
-                         description = "\n Description: " + event.description;
+                         description = "\n" + event.description;
                     }
 
                     if (!isEmpty(event.presentation_url)) {
-                        presentationUrl = "\n Presentation URL: " + event.presentation_url;
+                        presentationUrl = "\n Presentation: " + event.presentation_url;
                     }
 
                     if (!isEmpty(event.meeting_url)) {
-                        meetingURL = "\n Meeting URL: " + event.meeting_url;
+                        meetingURL = "\n Meeting: " + event.meeting_url;
                     }
-
-                    if (!isEmpty(event.fn_number)) {
-                        facultyNumber = "\n Faculty Number: " + event.fn_number;
-                    }
-              
-                    event_title.innerText = event.subject + ", " + event.name + description + presentationUrl + meetingURL + facultyNumber
-
+                    
+                    event_title.innerText = event.subject + ", " + event.name + (!isEmpty(event.fn_number) ? ", " + event.fn_number : "");
                     time.innerText = (new Date(event.start).getHours() < 10 ? '0' : '') + new Date(event.start).getHours() + ":" + (new Date(event.start).getMinutes() < 10 ? '0' : '') + new Date(event.start).getMinutes() + " - " + (new Date(event.end).getHours() < 10 ? '0' : '') + new Date(event.end).getHours() + ":" + (new Date(event.end).getMinutes() < 10 ? '0' : '') + new Date(event.end).getMinutes();
+                    event_info.innerText = description + presentationUrl + meetingURL + facultyNumber;
+                    
                     const calendar_events = calendar.childNodes[2];
 
                     event_item.appendChild(event_dot);
                     event_item.appendChild(event_title);
                     event_item.appendChild(time);
+                    event_item.appendChild(event_info);
                     calendar_events.appendChild(event_item);
 
                     event_item.addEventListener('click', (e) => {
